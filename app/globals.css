@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", serif;
+  --font-display: "Playfair Display", serif;
+  
+  --color-brand-beige: #f5f2ed;
+  --color-brand-ink: #111111;
+  --color-brand-gold: #c5a059;
+  --color-brand-cream: #faf9f6;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-sm: calc(var(--radius) * 0.6);
+}
+
+@layer base {
+  :root {
+    --background: 30 20% 94%;
+    --foreground: 0 0% 7%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 7%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 7%;
+    --primary: 38 48% 56%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 30 10% 90%;
+    --secondary-foreground: 0 0% 7%;
+    --muted: 30 10% 90%;
+    --muted-foreground: 0 0% 40%;
+    --accent: 30 10% 90%;
+    --accent-foreground: 0 0% 7%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 38 48% 56%;
+    --radius: 0rem; /* Sharp edges for luxury feel */
+  }
+
+  body {
+    @apply bg-brand-beige text-brand-ink font-sans antialiased selection:bg-brand-gold selection:text-white;
+    overflow-x: hidden;
+  }
+  
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight leading-[1.1];
+  }
+}
+
+/* Custom Utilities for Smoothness */
+.reveal-text {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.glass-nav {
+  @apply backdrop-blur-xl bg-brand-beige/80 border-b border-black/5;
+}
+
+.editorial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 3rem;
+}
+
+.image-container {
+  @apply overflow-hidden relative aspect-[4/5];
+}
+
+.image-container img {
+  @apply transition-transform duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)];
+}
+
+.image-container:hover img {
+  @apply scale-110;
+}
+
+.parallax-bg {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-brand-beige);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-brand-ink);
+  opacity: 0.2;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-brand-gold);
+}
