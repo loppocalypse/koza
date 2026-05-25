@@ -71,7 +71,7 @@ export function Navbar({ searchQuery = '', setSearchQuery }: NavbarProps) {
             </SheetContent>
           </Sheet>
 
-          <div className="hidden lg:flex items-center gap-8">
+          {/* <div className="hidden lg:flex items-center gap-8">
             {['Carpets', 'Towels', 'Umbrellas', 'Lighting'].map((item) => (
               <Link 
                 key={item} 
@@ -81,7 +81,7 @@ export function Navbar({ searchQuery = '', setSearchQuery }: NavbarProps) {
                 {item}
               </Link>
             ))}
-          </div>
+          </div> */}
         </div>
 
         <Link href="/" className="absolute left-1/2 -translate-x-1/2 group">

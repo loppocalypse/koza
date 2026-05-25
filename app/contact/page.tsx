@@ -19,8 +19,8 @@ export default function ContactPage() {
       {/* Cinematic Header */}
       <header className="relative h-[65vh] flex items-center justify-center overflow-hidden bg-brand-ink">
         <motion.div
-           style={{ y: useTransform(scrollYProgress, [0, 1], [0, 200]) }}
-           className="absolute inset-0 z-0"
+          style={{ y: useTransform(scrollYProgress, [0, 1], [0, 200]) }}
+          className="absolute inset-0 z-0"
         >
           <img
             src="https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=2000&auto=format&fit=crop"
@@ -42,7 +42,7 @@ export default function ContactPage() {
             </h1>
           </motion.div>
         </div>
-        
+
         {/* Gradient overlay to smoothly blend into the beige page below */}
         <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-brand-beige to-transparent z-10" />
       </header>
@@ -50,7 +50,7 @@ export default function ContactPage() {
       {/* Contact Section */}
       <main className="container mx-auto px-6 md:px-12 py-32 relative z-20 -mt-24">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-24 items-start">
-          
+
           {/* Left Column: Info */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -62,7 +62,7 @@ export default function ContactPage() {
             <div>
               <span className="text-[10px] uppercase tracking-[0.5em] font-medium text-brand-gold mb-6 block">Flagship Boutique</span>
               <h2 className="text-4xl md:text-5xl font-display leading-tight mb-8">
-                Visit our gallery<br/><span className="italic">in Tbilisi.</span>
+                Visit our gallery<br /><span className="italic">in Tbilisi.</span>
               </h2>
               <p className="text-lg font-serif opacity-70 leading-relaxed max-w-sm">
                 Our space is designed to be experienced. Feel the textures, observe the light, and discover the intentionality behind every piece.
@@ -76,7 +76,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h6 className="text-[10px] uppercase tracking-[0.2em] font-bold mb-2">Location</h6>
-                  <p className="text-sm font-serif opacity-70">Giorgi Guramishvili Street No:2,<br/>Tbilisi, Georgia</p>
+                  <p className="text-sm font-serif opacity-70">Giorgi Guramishvili Street No:2,<br />Tbilisi, Georgia</p>
                 </div>
               </div>
 
@@ -86,7 +86,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h6 className="text-[10px] uppercase tracking-[0.2em] font-bold mb-2">Telephone</h6>
-                  <p className="text-sm font-serif opacity-70">+995 555 12 34 56<br/>Mon - Sat, 10am - 7pm</p>
+                  <p className="text-sm font-serif opacity-70">+995 577 25 85 25<br />Mon - Sat, 10am - 7pm</p>
                 </div>
               </div>
 
@@ -96,7 +96,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h6 className="text-[10px] uppercase tracking-[0.2em] font-bold mb-2">General Inquiries</h6>
-                  <p className="text-sm font-serif opacity-70 hover:opacity-100 transition-opacity">concierge@kusinox.ge</p>
+                  <p className="text-sm font-serif opacity-70 hover:opacity-100 transition-opacity">koza.tbilisi@gmail.com</p>
                 </div>
               </div>
             </div>
@@ -114,27 +114,27 @@ export default function ContactPage() {
             <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-brand-gold opacity-50 m-6" />
 
             <h3 className="text-3xl font-display mb-12">Send a Message</h3>
-            
+
             <form className="flex flex-col gap-10" onSubmit={(e) => e.preventDefault()}>
               <div className="relative group">
-                <Input 
-                  type="text" 
-                  placeholder="Your Name" 
+                <Input
+                  type="text"
+                  placeholder="Your Name"
                   className="w-full bg-transparent border-0 border-b border-black/10 rounded-none px-0 h-14 focus-visible:ring-0 focus-visible:border-brand-gold placeholder:text-black/30 placeholder:uppercase placeholder:text-[10px] placeholder:tracking-[0.2em] transition-colors"
                 />
               </div>
 
               <div className="relative group">
-                <Input 
-                  type="email" 
-                  placeholder="Email Address" 
+                <Input
+                  type="email"
+                  placeholder="Email Address"
                   className="w-full bg-transparent border-0 border-b border-black/10 rounded-none px-0 h-14 focus-visible:ring-0 focus-visible:border-brand-gold placeholder:text-black/30 placeholder:uppercase placeholder:text-[10px] placeholder:tracking-[0.2em] transition-colors"
                 />
               </div>
 
               <div className="relative group">
-                <textarea 
-                  placeholder="How can we assist you?" 
+                <textarea
+                  placeholder="How can we assist you?"
                   rows={4}
                   className="w-full bg-transparent border-0 border-b border-black/10 rounded-none px-0 py-4 focus:outline-none focus:border-brand-gold placeholder:text-black/30 placeholder:uppercase placeholder:text-[10px] placeholder:tracking-[0.2em] transition-colors resize-none text-sm"
                 />

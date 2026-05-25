@@ -10,7 +10,7 @@ export function Footer() {
       <div className="container mx-auto px-6 md:px-12">
         <div className="grid lg:grid-cols-12 gap-20 mb-32">
           <div className="lg:col-span-5">
-            <h2 className="text-5xl font-display mb-12 tracking-tighter">KUSINOX</h2>
+            <h2 className="text-5xl font-display mb-12 tracking-tighter">KOZA</h2>
             <p className="text-lg font-serif opacity-50 max-w-md leading-relaxed mb-12">
               Join our inner circle for exclusive previews of upcoming collections and editorial stories on modern living.
             </p>
@@ -59,7 +59,7 @@ export function Footer() {
             <a href="#" className="hover:opacity-100 transition-opacity">Pinterest</a>
             <a href="#" className="hover:opacity-100 transition-opacity">LinkedIn</a>
           </div>
-          <span className="text-[9px] uppercase tracking-[0.2em] font-bold opacity-30">© 2026 Kusinox. Crafted with intention.</span>
+          <span className="text-[9px] uppercase tracking-[0.2em] font-bold opacity-30">© 2026 Koza. Crafted with intention.</span>
           <div className="flex gap-8 text-[9px] uppercase tracking-[0.2em] font-bold opacity-30">
             <a href="#" className="hover:opacity-100 transition-opacity">Privacy</a>
             <a href="#" className="hover:opacity-100 transition-opacity">Terms</a>

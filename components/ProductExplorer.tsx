@@ -112,7 +112,7 @@ export function ProductExplorer({ searchQuery = '', newArrivalsOnly = false, col
                       <span className="text-[9px] uppercase tracking-[0.2em] font-bold opacity-30 mb-2 block">{product.category}</span>
                       <h4 className="text-xl font-display group-hover:italic transition-all duration-500">{product.name}</h4>
                     </div>
-                    <span className="text-sm font-medium opacity-60">${product.price}</span>
+                    <span className="text-sm font-medium opacity-60"></span>
                   </div>
                 </div>
               </motion.div>
@@ -176,7 +176,7 @@ export function ProductExplorer({ searchQuery = '', newArrivalsOnly = false, col
                     {selectedProduct.collection}
                   </span>
                   <h2 className="text-5xl md:text-6xl font-display mb-8">{selectedProduct.name}</h2>
-                  <p className="text-3xl font-serif mb-10 text-brand-ink/60">${selectedProduct.price}</p>
+                  <p className="text-3xl font-serif mb-10 text-brand-ink/60"></p>
 
                   <div className="space-y-8 mb-16">
                     <p className="text-lg font-serif opacity-70 leading-relaxed">
