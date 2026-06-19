@@ -59,7 +59,7 @@ export function Footer() {
             <a href="#" className="hover:opacity-100 transition-opacity">Pinterest</a>
             <a href="#" className="hover:opacity-100 transition-opacity">LinkedIn</a>
           </div>
-          <span className="text-[9px] uppercase tracking-[0.2em] font-bold opacity-30">© 2026 Koza. Crafted with intention.</span>
+          <span className="text-[9px] uppercase tracking-[0.2em] font-bold opacity-30">© 2026 Koza. All Rights Reserved.</span>
           <div className="flex gap-8 text-[9px] uppercase tracking-[0.2em] font-bold opacity-30">
             <a href="#" className="hover:opacity-100 transition-opacity">Privacy</a>
             <a href="#" className="hover:opacity-100 transition-opacity">Terms</a>

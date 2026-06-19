@@ -27,7 +27,7 @@ export function ProductExplorer({ searchQuery = '', newArrivalsOnly = false, col
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
-  const categories = ['All', 'Seating', 'Tables', 'Lighting', 'Rugs', 'Decor'];
+  const categories = ['All', 'Seating', 'Tables', 'Lighting', 'Rugs', 'Towels', 'Umbrellas', 'Decor'];
 
   const filteredProducts = products.filter(product => {
     const matchesCategory = selectedCategory === 'All' || product.category === selectedCategory;
