@@ -10,6 +10,7 @@ export const supabase = supabaseUrl
   : null;
 
 export interface Product {
+  brand: any;
   id: string;
   name: string;
   description: string;
