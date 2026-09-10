@@ -63,6 +63,15 @@ export const BRANDS: Record<string, BrandInfo> = {
     description: 'Sculptural monolithic travertine, hand-blown brass pendant lighting, and minimalist Nordic lounge pieces.',
     heroImage: 'https://images.unsplash.com/photo-1592078615290-033ee584e267?q=80&w=1000&auto=format&fit=crop',
     categories: ['Seating', 'Tables', 'Lighting', 'Rugs']
+  },
+  'Ormel': {
+    id: 'Ormel',
+    name: 'Ormel Çelik',
+    subtitle: 'Architectural Hospitality & Service Guild',
+    origin: 'Istanbul, Turkey • Est. 1990',
+    description: 'Premier stainless steel and fine-wood hotel service trolleys, modular buffet architecture, and banquet systems engineered for high-profile hospitality.',
+    heroImage: '/collection/Ormel/3a32f5d4ecb948778fbf89585563a293_511.png',
+    categories: ['Hospitality', 'Tables', 'Seating', 'Decor']
   }
 };
 
@@ -70,6 +79,7 @@ export function getProductBrand(product: Product): string {
   if (product.brand && BRANDS[product.brand]) return product.brand;
   const img = product.image_url || '';
   const name = product.name || '';
+  if (img.includes('/collection/Ormel/') || name.toLowerCase().includes('ormel')) return 'Ormel';
   if (img.includes('/collection/Siesta/') || name.toLowerCase().startsWith('siesta')) return 'Siesta';
   if (img.includes('/collection/Detay/')) return 'Detay';
   if (
@@ -112,7 +122,7 @@ export function ProductExplorer({
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [sortBy, setSortBy] = useState<'featured' | 'az' | 'stock'>('featured');
 
-  const categories = ['All', 'Seating', 'Tables', 'Lighting', 'Rugs', 'Towels', 'Umbrellas', 'Decor'];
+  const categories = ['All', 'Hospitality', 'Seating', 'Tables', 'Lighting', 'Rugs', 'Towels', 'Umbrellas', 'Decor'];
 
   // Handle category switch -> reset brand & sub-collection drilldown
   const handleCategoryChange = (cat: string) => {

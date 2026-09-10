@@ -21,5 +21,6 @@ export const collections = [
   { name: "Telescopic", image: Telescopic.src },
   { name: "Side-Arm", image: SideArm.src },
   { name: "Pergo", image: Pergo.src },
-  { name: "Mega", image: Mega.src }
+  { name: "Mega", image: Mega.src },
+  { name: "Ormel", image: "/collection/Ormel/3a32f5d4ecb948778fbf89585563a293_511.png" }
 ];
