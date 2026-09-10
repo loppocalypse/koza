@@ -26,10 +26,21 @@ export function Footer() {
           </div>
 
           <div className="lg:col-span-2 lg:col-start-7">
-            <h6 className="text-[10px] uppercase tracking-[0.3em] font-bold mb-10 text-brand-gold">Shop</h6>
+            <h6 className="text-[10px] uppercase tracking-[0.3em] font-bold mb-10 text-brand-gold">Divisions</h6>
             <ul className="flex flex-col gap-6 text-sm font-serif opacity-50">
-              {['All Pieces', 'New Arrivals', 'The Nordic Series', 'Stone Essentials', 'Artisan Weaves'].map(item => (
-                <li key={item}><a href="#" className="hover:opacity-100 hover:italic transition-all">{item}</a></li>
+              {[
+                { name: 'All Pieces', href: '/shop' },
+                { name: 'Hospitality', href: '/hospitality' },
+                { name: 'Seating', href: '/seating' },
+                { name: 'Tables', href: '/tables' },
+                { name: 'Umbrellas', href: '/umbrellas' },
+                { name: 'Carpets', href: '/carpets' },
+              ].map(item => (
+                <li key={item.name}>
+                  <a href={item.href} className="hover:opacity-100 hover:text-brand-gold hover:italic transition-all">
+                    {item.name}
+                  </a>
+                </li>
               ))}
             </ul>
           </div>
@@ -37,8 +48,17 @@ export function Footer() {
           <div className="lg:col-span-2">
             <h6 className="text-[10px] uppercase tracking-[0.3em] font-bold mb-10 text-brand-gold">Company</h6>
             <ul className="flex flex-col gap-6 text-sm font-serif opacity-50">
-              {['Our Story', 'Journal', 'Sustainability', 'Careers', 'Contact'].map(item => (
-                <li key={item}><a href="#" className="hover:opacity-100 hover:italic transition-all">{item}</a></li>
+              {[
+                { name: 'Collections', href: '/collections' },
+                { name: 'New Arrivals', href: '/new-arrivals' },
+                { name: 'Journal', href: '/journal' },
+                { name: 'Contact', href: '/contact' }
+              ].map(item => (
+                <li key={item.name}>
+                  <a href={item.href} className="hover:opacity-100 hover:text-brand-gold hover:italic transition-all">
+                    {item.name}
+                  </a>
+                </li>
               ))}
             </ul>
           </div>

@@ -5902,5 +5902,77 @@
     "material": "AISI 304 Food-Grade Stainless Steel",
     "in_stock": true,
     "is_new": false
+  },
+  {
+    "id": "673",
+    "name": "Samur Protocol Prestige Broadloom",
+    "description": "Architectural heavy-contract woven broadloom carpet engineered for state protocol rooms, executive suites, and luxury hotel ballrooms.",
+    "image_url": "/protocol_samur.jpg",
+    "category": "Rugs",
+    "collection": "Protocol",
+    "material": "Wool Blend & Polyamide",
+    "in_stock": true,
+    "is_new": true,
+    "brand": "Samur"
+  },
+  {
+    "id": "674",
+    "name": "Samur Modular Architectural Carpet Tile",
+    "description": "High-traffic commercial modular carpet tiles with dimensional acoustic backing, designed for modern corporate headquarters and luxury hospitality.",
+    "image_url": "/tile_samur.jpg",
+    "category": "Rugs",
+    "collection": "The Tile",
+    "material": "Solution-Dyed Polyamide Nylon",
+    "in_stock": true,
+    "is_new": true,
+    "brand": "Samur"
+  },
+  {
+    "id": "675",
+    "name": "Samur Grand Contract Broadloom",
+    "description": "Seamless woven acoustic broadloom carpet delivering superior sound attenuation and plush underfoot comfort in commercial interiors.",
+    "image_url": "/broadloom_samur.jpg",
+    "category": "Rugs",
+    "collection": "Broadloom",
+    "material": "100% High-Density Polyamide 6.6",
+    "in_stock": true,
+    "is_new": false,
+    "brand": "Samur"
+  },
+  {
+    "id": "676",
+    "name": "Samur Protocol Velvet Guild Carpet",
+    "description": "Lustrous woven velvet-finish contract carpet crafted for presidential residences, galleries, and high-prestige embassies.",
+    "image_url": "/protocol_samur.jpg",
+    "category": "Rugs",
+    "collection": "Protocol",
+    "material": "Fine Wool & Silk Luster Blend",
+    "in_stock": true,
+    "is_new": true,
+    "brand": "Samur"
+  },
+  {
+    "id": "677",
+    "name": "Samur The Tile Geometric Slate",
+    "description": "Precision-cut acoustic carpet tiles featuring structured geometric weave textures for high-wear circulation zones.",
+    "image_url": "/tile_samur.jpg",
+    "category": "Rugs",
+    "collection": "The Tile",
+    "material": "Acoustic Recycled Polymer & Polyamide",
+    "in_stock": true,
+    "is_new": false,
+    "brand": "Samur"
+  },
+  {
+    "id": "678",
+    "name": "Samur Sovereign Broadloom",
+    "description": "Extra-dense tufted broadloom with stain-resistant fibers for banquet spaces and boutique hotel hallways.",
+    "image_url": "/broadloom_samur.jpg",
+    "category": "Rugs",
+    "collection": "Broadloom",
+    "material": "Wool-Touch Heavy Contract Polyamide",
+    "in_stock": true,
+    "is_new": false,
+    "brand": "Samur"
   }
 ]

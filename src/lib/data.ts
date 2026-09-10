@@ -10,17 +10,24 @@ import SideArm from '@/public/sidearm_umbrella.jpg';
 import Pergo from '@/public/pergo_umbrella.jpg';
 import Mega from '@/public/mega_umbrella.jpg';
 
-export const collections = [
-  { name: "Contract", image: Contract.src },
-  { name: "Rattan", image: Rattan.src },
-  { name: "Garden", image: Garden.src },
-  { name: "The Tile", image: TheTile.src },
-  { name: "Protocol", image: Protocol.src },
-  { name: "Bradloom", image: Broadloom.src },
-  { name: "Beach", image: Beach.src },
-  { name: "Telescopic", image: Telescopic.src },
-  { name: "Side-Arm", image: SideArm.src },
-  { name: "Pergo", image: Pergo.src },
-  { name: "Mega", image: Mega.src },
-  { name: "Ormel", image: "/collection/Ormel/3a32f5d4ecb948778fbf89585563a293_511.png" }
+export interface CollectionItem {
+  name: string;
+  image: string;
+  brand?: string;
+  category?: string;
+}
+
+export const collections: CollectionItem[] = [
+  { name: "Contract", image: Contract.src, brand: "Siesta", category: "Seating" },
+  { name: "Rattan", image: Rattan.src, brand: "Siesta", category: "Seating" },
+  { name: "Garden", image: Garden.src, brand: "Siesta", category: "Seating" },
+  { name: "The Tile", image: TheTile.src, brand: "Samur", category: "Rugs" },
+  { name: "Protocol", image: Protocol.src, brand: "Samur", category: "Rugs" },
+  { name: "Broadloom", image: Broadloom.src, brand: "Samur", category: "Rugs" },
+  { name: "Beach", image: Beach.src, brand: "Şemsiye Evi", category: "Umbrellas" },
+  { name: "Telescopic", image: Telescopic.src, brand: "Şemsiye Evi", category: "Umbrellas" },
+  { name: "Side-Arm", image: SideArm.src, brand: "Şemsiye Evi", category: "Umbrellas" },
+  { name: "Pergo", image: Pergo.src, brand: "Şemsiye Evi", category: "Umbrellas" },
+  { name: "Mega", image: Mega.src, brand: "Şemsiye Evi", category: "Umbrellas" },
+  { name: "Ormel", image: "/collection/Ormel/3a32f5d4ecb948778fbf89585563a293_511.png", brand: "Ormel", category: "Hospitality" }
 ];

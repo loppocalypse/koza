@@ -55,6 +55,31 @@ export function Navbar({ searchQuery = '', setSearchQuery }: NavbarProps) {
                   </Link>
                 ))}
               </div>
+
+              <div className="pt-8 mt-4 border-t border-black/5">
+                <span className="text-[9px] uppercase tracking-[0.3em] font-bold opacity-30 block mb-4">
+                  Curated Guild Divisions
+                </span>
+                <div className="grid grid-cols-2 gap-y-3 gap-x-6">
+                  {[
+                    { name: 'Hospitality', href: '/hospitality' },
+                    { name: 'Seating', href: '/seating' },
+                    { name: 'Tables', href: '/tables' },
+                    { name: 'Umbrellas', href: '/umbrellas' },
+                    { name: 'Carpets', href: '/carpets' },
+                    { name: 'Towels', href: '/towels' },
+                  ].map((div) => (
+                    <Link
+                      key={div.name}
+                      href={div.href}
+                      className="text-xs uppercase tracking-widest font-semibold opacity-60 hover:opacity-100 hover:text-brand-gold transition-colors"
+                    >
+                      {div.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
               <div className="mt-auto pt-12 border-t border-black/5 grid grid-cols-2 gap-8">
                 <div>
                   <h6 className="text-[10px] uppercase tracking-widest font-bold mb-4">Follow Us</h6>
@@ -71,17 +96,23 @@ export function Navbar({ searchQuery = '', setSearchQuery }: NavbarProps) {
             </SheetContent>
           </Sheet>
 
-          {/* <div className="hidden lg:flex items-center gap-8">
-            {['Carpets', 'Towels', 'Umbrellas', 'Lighting'].map((item) => (
+          <div className="hidden lg:flex items-center gap-8">
+            {[
+              { name: 'Hospitality', href: '/hospitality' },
+              { name: 'Seating', href: '/seating' },
+              { name: 'Tables', href: '/tables' },
+              { name: 'Umbrellas', href: '/umbrellas' },
+              { name: 'Carpets', href: '/carpets' },
+            ].map((item) => (
               <Link 
-                key={item} 
-                href={`/${item.toLowerCase()}`} 
-                className="text-[10px] uppercase tracking-[0.2em] font-bold opacity-40 hover:opacity-100 transition-opacity"
+                key={item.name} 
+                href={item.href} 
+                className="text-[10px] uppercase tracking-[0.2em] font-bold opacity-50 hover:opacity-100 hover:text-brand-gold transition-all"
               >
-                {item}
+                {item.name}
               </Link>
             ))}
-          </div> */}
+          </div>
         </div>
 
         <Link href="/" className="absolute left-1/2 -translate-x-1/2 group">
