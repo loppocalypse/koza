@@ -33,11 +33,18 @@ export function Navbar({ searchQuery = '', setSearchQuery }: NavbarProps) {
               </div>
               <span className="text-[10px] uppercase tracking-[0.2em] font-bold hidden sm:block">Menu</span>
             </SheetTrigger>
-            <SheetContent side="left" className="w-full md:w-[500px] bg-brand-beige border-none p-12 flex flex-col">
-              <SheetHeader className="mb-20">
-                <SheetTitle className="text-4xl font-display italic text-left">KOZA</SheetTitle>
+            <SheetContent side="left" className="w-full sm:max-w-md md:max-w-[500px] md:w-[500px] bg-brand-beige border-none p-8 md:p-12 flex flex-col overflow-y-auto no-scrollbar">
+              <SheetHeader className="mb-12 md:mb-16 p-0 shrink-0">
+                <div className="flex items-center gap-3">
+                  <img
+                    src="/favicon.ico"
+                    alt="Koza Logo"
+                    className="h-10 w-auto object-contain mix-blend-multiply"
+                  />
+                  <SheetTitle className="text-4xl font-display italic text-left">KOZA</SheetTitle>
+                </div>
               </SheetHeader>
-              <div className="flex flex-col gap-8">
+              <div className="flex flex-col gap-6 md:gap-8 shrink-0">
                 {['Shop All', 'New Arrivals', 'Collections', 'Journal', 'Contact'].map((item, i) => (
                   <Link
                     key={item}
@@ -47,16 +54,16 @@ export function Navbar({ searchQuery = '', setSearchQuery }: NavbarProps) {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: i * 0.1 }}
-                      className="text-4xl md:text-5xl font-display hover:italic hover:translate-x-4 transition-all duration-500 flex items-center justify-between group"
+                      className="text-3xl sm:text-4xl font-display hover:italic hover:translate-x-4 transition-all duration-500 flex items-center justify-between group whitespace-nowrap"
                     >
-                      {item}
-                      <ArrowUpRight className="w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <span>{item}</span>
+                      <ArrowUpRight className="w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity shrink-0 ml-4" />
                     </motion.div>
                   </Link>
                 ))}
               </div>
 
-              <div className="pt-8 mt-4 border-t border-black/5">
+              <div className="pt-8 mt-4 border-t border-black/5 shrink-0">
                 <span className="text-[9px] uppercase tracking-[0.3em] font-bold opacity-30 block mb-4">
                   Curated Guild Divisions
                 </span>
@@ -80,7 +87,7 @@ export function Navbar({ searchQuery = '', setSearchQuery }: NavbarProps) {
                 </div>
               </div>
 
-              <div className="mt-auto pt-12 border-t border-black/5 grid grid-cols-2 gap-8">
+              <div className="mt-8 pt-8 md:mt-auto md:pt-12 border-t border-black/5 grid grid-cols-2 gap-8 shrink-0">
                 <div>
                   <h6 className="text-[10px] uppercase tracking-widest font-bold mb-4">Follow Us</h6>
                   <div className="flex gap-4 opacity-60">
