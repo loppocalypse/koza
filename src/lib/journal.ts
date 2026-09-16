@@ -20,7 +20,7 @@ export const MOCK_ARTICLES: JournalArticle[] = [
     id: '2',
     category: 'Behind The Scenes',
     readTime: '4 Min Read',
-    title: 'A Mastery of Joinery: Inside the Kusinox Workshop',
+    title: 'A Mastery of Joinery: Inside the Koza Workshop',
     excerpt: 'Step off the showroom floor and into the dust-filled air of our Tbilisi workshop, where master craftsmen transform raw, sustainably sourced oak into seamless art.',
     image_url: 'https://images.unsplash.com/photo-1610224426217-1011d8825838?q=80&w=1000&auto=format&fit=crop'
   },
