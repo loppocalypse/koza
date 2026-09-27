@@ -20,8 +20,10 @@ import {
   User,
   Hash,
   SlidersHorizontal,
-  RotateCcw
+  RotateCcw,
+  Heart
 } from 'lucide-react';
+import { useFavorites } from '@/src/lib/favorites';
 import { MOCK_PRODUCTS, type Product } from '@/src/lib/supabase';
 import { SectionHeading } from '@/components/SectionHeading';
 
@@ -149,6 +151,7 @@ export function ProductExplorer({
   collectionName,
   category: initialCategory
 }: ProductExplorerProps) {
+  const { isFavorite, toggleFavorite } = useFavorites();
   // Normalize collection matching if supplied
   const baseProducts = useMemo(() => {
     let list = newArrivalsOnly ? MOCK_PRODUCTS.filter(p => p.is_new) : MOCK_PRODUCTS;
@@ -601,15 +604,33 @@ export function ProductExplorer({
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                           referrerPolicy="no-referrer"
                         />
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            toggleFavorite(product);
+                          }}
+                          className="absolute top-4 right-4 z-20 w-9 h-9 rounded-full bg-white/95 backdrop-blur-md flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-sm group/fav cursor-pointer"
+                          title={isFavorite(product.id) ? "Remove from Favorites" : "Save to Favorites"}
+                          aria-label={isFavorite(product.id) ? "Remove from Favorites" : "Save to Favorites"}
+                        >
+                          <Heart
+                            className={`w-4 h-4 transition-colors ${
+                              isFavorite(product.id)
+                                ? "fill-red-500 text-red-500"
+                                : "text-brand-ink/60 group-hover/fav:text-brand-gold"
+                            }`}
+                          />
+                        </button>
                         {!product.in_stock && (
-                          <div className="absolute top-6 left-6">
+                          <div className="absolute top-4 left-4">
                             <Badge className="bg-white/95 text-amber-700 rounded-none text-[8px] uppercase tracking-widest px-3 py-1.5 border-none backdrop-blur-sm shadow-sm font-semibold">
                               Waitlist
                             </Badge>
                           </div>
                         )}
                         {product.is_new && (
-                          <div className="absolute top-6 right-6">
+                          <div className="absolute top-4 left-4">
                             <Badge className="bg-brand-gold text-white rounded-none text-[8px] uppercase tracking-widest px-3 py-1.5 border-none shadow-sm font-semibold">
                               New
                             </Badge>
@@ -801,13 +822,31 @@ export function ProductExplorer({
                     </div>
 
                     <div className="space-y-4 pt-4 border-t border-black/5">
-                      <Button
-                        onClick={() => setIsInquiryOpen(true)}
-                        className="w-full rounded-none bg-brand-ink text-white h-16 text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-brand-gold transition-all duration-500 shadow-xl flex items-center justify-center gap-3"
-                      >
-                        <Send className="w-4 h-4" />
-                        Inquire For Project / Trade Pricing
-                      </Button>
+                      <div className="flex gap-3">
+                        <Button
+                          onClick={() => setIsInquiryOpen(true)}
+                          className="flex-1 rounded-none bg-brand-ink text-white h-16 text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-brand-gold transition-all duration-500 shadow-xl flex items-center justify-center gap-3"
+                        >
+                          <Send className="w-4 h-4" />
+                          Inquire For Trade Pricing
+                        </Button>
+                        <Button
+                          type="button"
+                          variant="outline"
+                          onClick={() => toggleFavorite(selectedProduct)}
+                          className={`h-16 px-6 rounded-none border transition-colors flex items-center gap-2 text-[10px] uppercase tracking-widest font-bold cursor-pointer ${
+                            isFavorite(selectedProduct.id)
+                              ? 'border-red-200 bg-red-50/50 text-red-600'
+                              : 'border-brand-ink/20 hover:border-brand-gold text-brand-ink hover:text-brand-gold'
+                          }`}
+                          title={isFavorite(selectedProduct.id) ? "Remove from Favorites" : "Save to Favorites"}
+                        >
+                          <Heart className={`w-4 h-4 ${isFavorite(selectedProduct.id) ? 'fill-red-500 text-red-500' : ''}`} />
+                          <span className="hidden sm:inline">
+                            {isFavorite(selectedProduct.id) ? 'Shortlisted' : 'Shortlist'}
+                          </span>
+                        </Button>
+                      </div>
 
                       <div className="flex items-center justify-between pt-2">
                         <button

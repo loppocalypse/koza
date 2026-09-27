@@ -1,10 +1,11 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { motion } from 'motion/react';
-import { Search, ShoppingBag, Instagram, Twitter, ArrowUpRight } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+import { Search, Heart, Instagram, Twitter, ArrowUpRight, X, Trash2, ArrowRight } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
+import { useFavorites } from '@/src/lib/favorites';
 import Link from 'next/link';
 
 interface NavbarProps {
@@ -14,6 +15,7 @@ interface NavbarProps {
 
 export function Navbar({ searchQuery = '', setSearchQuery }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
+  const { favorites, removeFavorite, clearFavorites, count } = useFavorites();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -25,6 +27,7 @@ export function Navbar({ searchQuery = '', setSearchQuery }: NavbarProps) {
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${isScrolled ? 'glass-nav py-4' : 'bg-transparent py-10'}`}>
       <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
         <div className="flex items-center gap-12">
+          {/* Main Menu Sheet */}
           <Sheet>
             <SheetTrigger render={<button className="group flex items-center gap-3 focus:outline-none" />}>
               <div className="flex flex-col gap-1.5">
@@ -136,10 +139,140 @@ export function Navbar({ searchQuery = '', setSearchQuery }: NavbarProps) {
               onChange={(e) => setSearchQuery?.(e.target.value)}
             />
           </div>
-          <button className="relative group">
-            <ShoppingBag className="w-5 h-5 group-hover:text-brand-gold transition-colors" />
-            <span className="absolute -top-1 -right-1 w-4 h-4 bg-brand-ink text-white text-[8px] flex items-center justify-center rounded-full">+9</span>
-          </button>
+
+          {/* Favorites List Drawer */}
+          <Sheet>
+            <SheetTrigger render={
+              <button 
+                className="relative group p-2 focus:outline-none cursor-pointer"
+                title="View Favorites Shortlist"
+                aria-label="View Favorites Shortlist"
+              />
+            }>
+              <Heart className={`w-5 h-5 transition-transform duration-300 group-hover:scale-110 ${count > 0 ? 'text-brand-ink fill-brand-ink/10 group-hover:fill-red-500 group-hover:text-red-500' : 'text-brand-ink opacity-70 group-hover:opacity-100 group-hover:text-brand-gold'}`} />
+              {count > 0 && (
+                <span className="absolute -top-0.5 -right-0.5 min-w-[17px] h-[17px] px-1 bg-brand-gold text-white text-[9px] font-bold flex items-center justify-center rounded-full shadow-sm">
+                  {count}
+                </span>
+              )}
+            </SheetTrigger>
+            <SheetContent side="right" className="w-full sm:max-w-md md:max-w-[480px] bg-brand-beige border-none p-6 md:p-10 flex flex-col justify-between overflow-y-auto no-scrollbar">
+              <div>
+                <SheetHeader className="mb-8 p-0 shrink-0 border-b border-black/10 pb-6 text-left">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <span className="text-[9px] uppercase tracking-[0.3em] font-bold text-brand-gold block mb-1">
+                        Architectural Shortlist
+                      </span>
+                      <SheetTitle className="text-3xl md:text-4xl font-display italic text-left">
+                        Favorites
+                      </SheetTitle>
+                    </div>
+                    {count > 0 && (
+                      <button
+                        onClick={() => clearFavorites()}
+                        className="text-[9px] uppercase tracking-widest font-bold opacity-40 hover:opacity-100 hover:text-red-600 transition-colors flex items-center gap-1.5"
+                        title="Clear all favorites"
+                      >
+                        <Trash2 className="w-3 h-3" />
+                        Clear All
+                      </button>
+                    )}
+                  </div>
+                  <p className="text-xs font-serif opacity-60 mt-2">
+                    {count === 0
+                      ? 'No pieces shortlisted yet.'
+                      : `${count} ${count === 1 ? 'piece' : 'pieces'} curated for project review and specifications.`}
+                  </p>
+                </SheetHeader>
+
+                {/* Favorites Items List */}
+                <div className="space-y-4">
+                  <AnimatePresence mode="popLayout">
+                    {favorites.map((product) => (
+                      <motion.div
+                        key={product.id}
+                        layout
+                        initial={{ opacity: 0, y: 15 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, x: 20 }}
+                        transition={{ duration: 0.3 }}
+                        className="p-4 bg-white border border-brand-ink/5 flex gap-4 items-center group relative shadow-xs"
+                      >
+                        <div className="w-20 h-20 bg-brand-beige relative overflow-hidden shrink-0 border border-brand-ink/5">
+                          <img
+                            src={product.image_url}
+                            alt={product.name}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            referrerPolicy="no-referrer"
+                          />
+                        </div>
+
+                        <div className="flex-1 min-w-0 pr-6">
+                          <span className="text-[8px] uppercase tracking-[0.2em] font-bold text-brand-gold block mb-0.5">
+                            {product.brand || product.category}
+                          </span>
+                          <h4 className="text-base font-display truncate text-brand-ink group-hover:italic transition-all">
+                            {product.name}
+                          </h4>
+                          {product.material && (
+                            <p className="text-[11px] font-serif opacity-50 truncate mt-0.5">
+                              {product.material}
+                            </p>
+                          )}
+                        </div>
+
+                        <button
+                          onClick={() => removeFavorite(product.id)}
+                          className="w-8 h-8 rounded-full bg-brand-beige hover:bg-red-50 text-brand-ink/50 hover:text-red-600 flex items-center justify-center transition-colors absolute top-3 right-3"
+                          title="Remove piece"
+                          aria-label={`Remove ${product.name} from favorites`}
+                        >
+                          <X className="w-3.5 h-3.5" />
+                        </button>
+                      </motion.div>
+                    ))}
+                  </AnimatePresence>
+
+                  {/* Empty State */}
+                  {favorites.length === 0 && (
+                    <div className="py-20 text-center flex flex-col items-center justify-center">
+                      <div className="w-14 h-14 rounded-full bg-brand-ink/5 flex items-center justify-center text-brand-ink/30 mb-6">
+                        <Heart className="w-6 h-6" />
+                      </div>
+                      <h5 className="text-xl font-display mb-2">Your Shortlist is Empty</h5>
+                      <p className="text-xs font-serif opacity-60 max-w-xs leading-relaxed mb-8">
+                        Explore our commercial seating, contract carpets, bespoke tables, and Aegean textiles to curate your project.
+                      </p>
+                      <Link
+                        href="/collections"
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-brand-ink text-white text-[10px] uppercase tracking-widest font-bold hover:bg-brand-gold transition-colors shadow-sm"
+                      >
+                        Explore Collections
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </Link>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Bottom Actions */}
+              {favorites.length > 0 && (
+                <div className="pt-6 mt-8 border-t border-black/10 shrink-0 space-y-3">
+                  <Link
+                    href={`/contact?subject=${encodeURIComponent('Shortlist Specification Inquiry (' + favorites.map(f => f.name).join(', ') + ')')}`}
+                    className="w-full flex items-center justify-center gap-3 py-4 bg-brand-ink text-white text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-brand-gold transition-all duration-300 shadow-md"
+                  >
+                    <span>Request Spec & Quote ({count})</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                  <p className="text-[10px] font-serif text-center opacity-40">
+                    Includes CAD blocks, finish samples, and contract pricing.
+                  </p>
+                </div>
+              )}
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
     </nav>
