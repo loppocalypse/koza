@@ -32,6 +32,7 @@ import { Footer } from '@/components/Footer';
 
 import { SectionHeading, RevealText } from '@/components/SectionHeading';
 import { ProductExplorer } from '@/components/ProductExplorer';
+import { useLanguage } from '@/src/lib/i18n';
 import Link from 'next/link';
 
 // --- Components ---
@@ -43,6 +44,7 @@ export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeCollection, setActiveCollection] = useState(0);
   const [isResetting, setIsResetting] = useState(false);
+  const { t, language } = useLanguage();
 
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll();
@@ -106,17 +108,27 @@ export default function App() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, ease: [0.23, 1, 0.32, 1] }}
           >
-            <span className="text-[10px] uppercase tracking-[0.5em] font-medium mb-8 block opacity-60">Est. 2026 — Tbilisi</span>
+            <span className="text-[10px] uppercase tracking-[0.5em] font-medium mb-8 block opacity-60">
+              {t.estTbilisi}
+            </span>
             <h2 className="text-7xl md:text-[10rem] font-display leading-[0.85] mb-12 tracking-tighter">
-              Art of <br /> <span className="italic font-normal">Living</span>
+              {language === 'ka' ? (
+                <>
+                  ცხოვრების <br /> <span className="italic font-normal">ხელოვნება</span>
+                </>
+              ) : (
+                <>
+                  Art of <br /> <span className="italic font-normal">Living</span>
+                </>
+              )}
             </h2>
             <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
               <p className="text-sm md:text-lg font-serif opacity-60 max-w-xs leading-relaxed">
-                Curating the world's most intentional furniture for the modern sanctuary.
+                {t.heroTagline}
               </p>
               <div className="h-px w-12 bg-white/20 hidden md:block" />
               <Button className="bg-white text-brand-ink hover:bg-brand-gold hover:text-white rounded-none px-10 py-8 h-auto text-[10px] uppercase tracking-[0.2em] font-bold transition-all duration-500 group">
-                <a href="/collections">Shop Collection</a>
+                <a href="/collections">{t.shopCollection}</a>
                 <ArrowRight className="ml-3 w-4 h-4 group-hover:translate-x-2 transition-transform" />
               </Button>
             </div>
@@ -129,7 +141,7 @@ export default function App() {
           transition={{ delay: 1.5, duration: 1 }}
           className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-white/40"
         >
-          <span className="text-[8px] uppercase tracking-[0.4em]">Scroll to explore</span>
+          <span className="text-[8px] uppercase tracking-[0.4em]">{t.scrollToExplore}</span>
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
@@ -143,8 +155,8 @@ export default function App() {
       <section className="py-32 bg-brand-cream overflow-hidden">
         <div className="container mx-auto px-6 md:px-12">
           <SectionHeading
-            subtitle="Curated Series"
-            title="Explore our signature collections"
+            subtitle={t.curatedSeries}
+            title={t.exploreSignatureCollections}
           />
 
           <div

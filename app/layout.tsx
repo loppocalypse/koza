@@ -1,5 +1,6 @@
 import "./globals.css";
 import { FavoritesProvider } from "@/src/lib/favorites";
+import { LanguageProvider } from "@/src/lib/i18n";
 
 export const metadata = {
   title: "Koza | Furniture & Textiles",
@@ -14,9 +15,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased">
-        <FavoritesProvider>
-          {children}
-        </FavoritesProvider>
+        <LanguageProvider>
+          <FavoritesProvider>
+            {children}
+          </FavoritesProvider>
+        </LanguageProvider>
       </body>
     </html>
   );

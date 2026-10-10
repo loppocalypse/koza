@@ -24,6 +24,7 @@ import {
   Heart
 } from 'lucide-react';
 import { useFavorites } from '@/src/lib/favorites';
+import { useLanguage } from '@/src/lib/i18n';
 import { MOCK_PRODUCTS, type Product } from '@/src/lib/supabase';
 import { SectionHeading } from '@/components/SectionHeading';
 
@@ -152,6 +153,24 @@ export function ProductExplorer({
   category: initialCategory
 }: ProductExplorerProps) {
   const { isFavorite, toggleFavorite } = useFavorites();
+  const { t, language } = useLanguage();
+
+  const getCategoryLabel = (cat: string) => {
+    if (language !== 'ka') return cat;
+    switch (cat) {
+      case 'All': return 'ყველა';
+      case 'Hospitality': return 'ჰოსპიტალითი';
+      case 'Seating': return 'სკამები & სავარძლები';
+      case 'Tables': return 'მაგიდები';
+      case 'Lighting': return 'განათება';
+      case 'Rugs': return 'ხალიჩები';
+      case 'Towels': return 'პირსახოცები';
+      case 'Umbrellas': return 'ქოლგები';
+      case 'Decor': return 'დეკორი';
+      default: return cat;
+    }
+  };
+
   // Normalize collection matching if supplied
   const baseProducts = useMemo(() => {
     let list = newArrivalsOnly ? MOCK_PRODUCTS.filter(p => p.is_new) : MOCK_PRODUCTS;
@@ -317,21 +336,23 @@ export function ProductExplorer({
             <SectionHeading
               subtitle={
                 collectionName
-                  ? `Collection Series`
+                  ? (language === 'ka' ? `კოლექციის სერია` : `Collection Series`)
                   : newArrivalsOnly
-                  ? "New Arrivals"
+                  ? t.newArrivals
                   : selectedBrand
-                  ? `${activeBrandInfo?.name || selectedBrand} • ${selectedCategory}`
-                  : "Brand Directory"
+                  ? `${activeBrandInfo?.name || selectedBrand} • ${getCategoryLabel(selectedCategory)}`
+                  : (language === 'ka' ? 'ბრენდების კატალოგი' : 'Brand Directory')
               }
               title={
                 collectionName
-                  ? `Discover the ${collectionName} Edition`
+                  ? (language === 'ka' ? `აღმოაჩინეთ ${collectionName} გამოშვება` : `Discover the ${collectionName} Edition`)
                   : newArrivalsOnly
-                  ? "Discover our newest additions"
+                  ? t.discoverNewestAdditions
                   : selectedBrand
-                  ? `${activeBrandInfo?.subtitle || 'Selected Brand Collection'}`
-                  : `Explore ${selectedCategory === 'All' ? 'Partner Brands' : `${selectedCategory} by Brand`}`
+                  ? `${activeBrandInfo?.subtitle || (language === 'ka' ? 'არჩეული ბრენდის კოლექცია' : 'Selected Brand Collection')}`
+                  : (language === 'ka' 
+                      ? `აღმოაჩინეთ ${selectedCategory === 'All' ? 'პარტნიორი ბრენდები' : `${getCategoryLabel(selectedCategory)} ბრენდების მიხედვით`}`
+                      : `Explore ${selectedCategory === 'All' ? 'Partner Brands' : `${selectedCategory} by Brand`}`)
               }
             />
 
@@ -351,7 +372,9 @@ export function ProductExplorer({
                   className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-bold text-brand-gold hover:text-brand-ink transition-colors group"
                 >
                   <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
-                  Back to Available Brands in {selectedCategory}
+                  {language === 'ka' 
+                    ? `უკან ბრენდებთან (${getCategoryLabel(selectedCategory)})` 
+                    : `Back to Available Brands in ${selectedCategory}`}
                 </button>
               </motion.div>
             )}
@@ -367,7 +390,7 @@ export function ProductExplorer({
                       selectedCategory === cat ? 'text-brand-ink' : 'text-brand-ink/30 hover:text-brand-ink'
                     }`}
                   >
-                    {cat}
+                    {getCategoryLabel(cat)}
                     <motion.span
                       className="absolute bottom-0 left-0 right-0 h-px bg-brand-gold origin-left"
                       initial={false}
@@ -788,33 +811,35 @@ export function ProductExplorer({
                       <div className="grid grid-cols-2 gap-6 pt-6 border-t border-black/5 mb-8">
                         <div>
                           <span className="text-[9px] uppercase tracking-[0.2em] font-bold opacity-40 block mb-1">
-                            Category
+                            {language === 'ka' ? 'კატეგორია' : 'Category'}
                           </span>
-                          <span className="text-sm font-medium">{selectedProduct.category}</span>
+                          <span className="text-sm font-medium">{getCategoryLabel(selectedProduct.category)}</span>
                         </div>
                         <div>
                           <span className="text-[9px] uppercase tracking-[0.2em] font-bold opacity-40 block mb-1">
-                            Primary Material
+                            {language === 'ka' ? 'ძირითადი მასალა' : 'Primary Material'}
                           </span>
                           <span className="text-sm font-medium">
-                            {selectedProduct.material || 'Architectural Specification'}
+                            {selectedProduct.material || (language === 'ka' ? 'არქიტექტურული სპეციფიკაცია' : 'Architectural Specification')}
                           </span>
                         </div>
                         <div>
                           <span className="text-[9px] uppercase tracking-[0.2em] font-bold opacity-40 block mb-1">
-                            Availability
+                            {language === 'ka' ? 'ხელმისაწვდომობა' : 'Availability'}
                           </span>
                           <span
                             className={`text-sm font-medium ${
                               selectedProduct.in_stock ? 'text-green-700' : 'text-amber-700'
                             }`}
                           >
-                            {selectedProduct.in_stock ? 'Commercial Stock Ready' : 'Custom Production / Waitlist'}
+                            {selectedProduct.in_stock 
+                              ? (language === 'ka' ? 'მარაგშია' : 'Commercial Stock Ready') 
+                              : (language === 'ka' ? 'ინდივიდუალური წარმოება' : 'Custom Production / Waitlist')}
                           </span>
                         </div>
                         <div>
                           <span className="text-[9px] uppercase tracking-[0.2em] font-bold opacity-40 block mb-1">
-                            Guild Division
+                            {language === 'ka' ? 'განყოფილება' : 'Guild Division'}
                           </span>
                           <span className="text-sm font-medium">{getProductBrand(selectedProduct)}</span>
                         </div>
@@ -828,7 +853,7 @@ export function ProductExplorer({
                           className="flex-1 rounded-none bg-brand-ink text-white h-16 text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-brand-gold transition-all duration-500 shadow-xl flex items-center justify-center gap-3"
                         >
                           <Send className="w-4 h-4" />
-                          Inquire For Trade Pricing
+                          {language === 'ka' ? 'ფასის მოთხოვნა' : 'Inquire For Trade Pricing'}
                         </Button>
                         <Button
                           type="button"
@@ -839,11 +864,13 @@ export function ProductExplorer({
                               ? 'border-red-200 bg-red-50/50 text-red-600'
                               : 'border-brand-ink/20 hover:border-brand-gold text-brand-ink hover:text-brand-gold'
                           }`}
-                          title={isFavorite(selectedProduct.id) ? "Remove from Favorites" : "Save to Favorites"}
+                          title={isFavorite(selectedProduct.id) ? (language === 'ka' ? "რჩეულებიდან წაშლა" : "Remove from Favorites") : (language === 'ka' ? "რჩეულებში დამატება" : "Save to Favorites")}
                         >
                           <Heart className={`w-4 h-4 ${isFavorite(selectedProduct.id) ? 'fill-red-500 text-red-500' : ''}`} />
                           <span className="hidden sm:inline">
-                            {isFavorite(selectedProduct.id) ? 'Shortlisted' : 'Shortlist'}
+                            {isFavorite(selectedProduct.id) 
+                              ? (language === 'ka' ? 'რჩეულებშია' : 'Shortlisted') 
+                              : (language === 'ka' ? 'რჩეული' : 'Shortlist')}
                           </span>
                         </Button>
                       </div>
@@ -854,13 +881,13 @@ export function ProductExplorer({
                           className="text-[10px] uppercase tracking-[0.2em] font-bold opacity-40 hover:opacity-100 transition-opacity flex items-center gap-2"
                         >
                           <FileText className="w-3.5 h-3.5" />
-                          Print Spec Sheet
+                          {language === 'ka' ? 'სპეციფიკაციის ბეჭდვა' : 'Print Spec Sheet'}
                         </button>
                         <button
                           onClick={() => setSelectedProduct(null)}
                           className="text-[10px] uppercase tracking-[0.2em] font-bold opacity-40 hover:opacity-100 transition-opacity flex items-center gap-2 group"
                         >
-                          Return to Explorer
+                          {language === 'ka' ? 'კატალოგში დაბრუნება' : 'Return to Explorer'}
                           <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                         </button>
                       </div>
@@ -877,31 +904,31 @@ export function ProductExplorer({
                     <div>
                       <div className="flex items-center justify-between mb-4">
                         <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-brand-gold">
-                          Project Quotation Request
+                          {language === 'ka' ? 'პროექტის ფასის მოთხოვნა' : 'Project Quotation Request'}
                         </span>
                         <button
                           onClick={() => setIsInquiryOpen(false)}
                           className="text-[10px] uppercase tracking-widest font-bold opacity-40 hover:opacity-100"
                         >
-                          Back to Details
+                          {language === 'ka' ? 'უკან დეტალებთან' : 'Back to Details'}
                         </button>
                       </div>
 
                       <h3 className="text-2xl font-display mb-1">{selectedProduct.name}</h3>
                       <p className="text-xs font-serif opacity-50 mb-6">
-                        Division: {getProductBrand(selectedProduct)} • Series: {selectedProduct.collection || 'Custom'}
+                        {language === 'ka' ? 'განყოფილება' : 'Division'}: {getProductBrand(selectedProduct)} • {language === 'ka' ? 'სერია' : 'Series'}: {selectedProduct.collection || (language === 'ka' ? 'სტანდარტული' : 'Custom')}
                       </p>
 
                       {!inquirySubmitted ? (
                         <form onSubmit={handleInquirySubmit} className="space-y-4">
                           <div>
                             <label className="block text-[9px] uppercase tracking-widest font-bold opacity-40 mb-1">
-                              Contact Name *
+                              {language === 'ka' ? 'საკონტაქტო პირი *' : 'Contact Name *'}
                             </label>
                             <input
                               type="text"
                               required
-                              placeholder="e.g. Giorgi Guramishvili"
+                              placeholder={language === 'ka' ? 'მაგ. გიორგი გურამიშვილი' : 'e.g. Giorgi Guramishvili'}
                               value={inquiryForm.name}
                               onChange={(e) => setInquiryForm({ ...inquiryForm, name: e.target.value })}
                               className="w-full bg-brand-beige/50 border border-brand-ink/10 px-4 py-2.5 text-xs focus:outline-none focus:border-brand-gold transition-colors"
@@ -911,12 +938,12 @@ export function ProductExplorer({
                           <div className="grid grid-cols-2 gap-4">
                             <div>
                               <label className="block text-[9px] uppercase tracking-widest font-bold opacity-40 mb-1">
-                                Professional Email *
+                                {language === 'ka' ? 'ელფოსტა *' : 'Professional Email *'}
                               </label>
                               <input
                                 type="email"
                                 required
-                                placeholder="architect@firm.com"
+                                placeholder="architect@firm.ge"
                                 value={inquiryForm.email}
                                 onChange={(e) => setInquiryForm({ ...inquiryForm, email: e.target.value })}
                                 className="w-full bg-brand-beige/50 border border-brand-ink/10 px-4 py-2.5 text-xs focus:outline-none focus:border-brand-gold transition-colors"
@@ -924,7 +951,7 @@ export function ProductExplorer({
                             </div>
                             <div>
                               <label className="block text-[9px] uppercase tracking-widest font-bold opacity-40 mb-1">
-                                Est. Quantity
+                                {language === 'ka' ? 'სავარაუდო რაოდენობა' : 'Est. Quantity'}
                               </label>
                               <input
                                 type="number"
@@ -938,11 +965,11 @@ export function ProductExplorer({
 
                           <div>
                             <label className="block text-[9px] uppercase tracking-widest font-bold opacity-40 mb-1">
-                              Company / Hotel / Project Name
+                              {language === 'ka' ? 'კომპანია / სასტუმრო / პროექტი' : 'Company / Hotel / Project Name'}
                             </label>
                             <input
                               type="text"
-                              placeholder="e.g. Radisson Blu Resort / Luxury Residences"
+                              placeholder={language === 'ka' ? 'მაგ. Radisson Blu / სასტუმრო თბილისი' : 'e.g. Radisson Blu Resort / Luxury Residences'}
                               value={inquiryForm.company}
                               onChange={(e) => setInquiryForm({ ...inquiryForm, company: e.target.value })}
                               className="w-full bg-brand-beige/50 border border-brand-ink/10 px-4 py-2.5 text-xs focus:outline-none focus:border-brand-gold transition-colors"
@@ -951,11 +978,11 @@ export function ProductExplorer({
 
                           <div>
                             <label className="block text-[9px] uppercase tracking-widest font-bold opacity-40 mb-1">
-                              Custom Notes & Finishes
+                              {language === 'ka' ? 'შენიშვნები და სპეციფიკაციები' : 'Custom Notes & Finishes'}
                             </label>
                             <textarea
                               rows={3}
-                              placeholder="Specific dimensions, finish requirements, or site delivery location..."
+                              placeholder={language === 'ka' ? 'კონკრეტული ზომები, მასალების მოთხოვნები ან ობიექტის ლოკაცია...' : 'Specific dimensions, finish requirements, or site delivery location...'}
                               value={inquiryForm.notes}
                               onChange={(e) => setInquiryForm({ ...inquiryForm, notes: e.target.value })}
                               className="w-full bg-brand-beige/50 border border-brand-ink/10 px-4 py-2.5 text-xs focus:outline-none focus:border-brand-gold transition-colors resize-none"
@@ -966,7 +993,7 @@ export function ProductExplorer({
                             type="submit"
                             className="w-full rounded-none bg-brand-ink text-white h-14 text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-brand-gold transition-all duration-500 shadow-xl mt-4"
                           >
-                            Submit Specification Inquiry
+                            {language === 'ka' ? 'მოთხოვნის გაგზავნა' : 'Submit Specification Inquiry'}
                           </Button>
                         </form>
                       ) : (
@@ -978,18 +1005,22 @@ export function ProductExplorer({
                           <div className="w-16 h-16 bg-green-50 text-green-700 rounded-full flex items-center justify-center mb-2">
                             <CheckCircle2 className="w-8 h-8" />
                           </div>
-                          <h4 className="text-2xl font-display">Inquiry Received</h4>
+                          <h4 className="text-2xl font-display">
+                            {language === 'ka' ? 'მოთხოვნა მიღებულია' : 'Inquiry Received'}
+                          </h4>
                           <p className="text-xs font-serif opacity-70 max-w-xs leading-relaxed">
-                            Thank you, {inquiryForm.name || 'valued partner'}. Our hospitality & contract specialist will review your specifications and email you a tailored trade quote and CAD sheets within 24 hours.
+                            {language === 'ka'
+                              ? `გმადლობთ, ${inquiryForm.name || 'ძვირფასო პარტნიორო'}. ჩვენი სპეციალისტი განიხილავს თქვენს სპეციფიკაციას და 24 საათში გამოგიგზავნით კორპორატიულ ფასებსა და CAD ნახაზებს.`
+                              : `Thank you, ${inquiryForm.name || 'valued partner'}. Our hospitality & contract specialist will review your specifications and email you a tailored trade quote and CAD sheets within 24 hours.`}
                           </p>
                           <Button
                             onClick={() => {
-                              setInquirySubmitted(false);
                               setIsInquiryOpen(false);
+                              setInquirySubmitted(false);
                             }}
-                            className="rounded-none bg-brand-ink text-white text-[9px] uppercase tracking-widest px-8 py-4 mt-6"
+                            className="rounded-none bg-brand-ink text-white text-[10px] uppercase tracking-widest font-bold hover:bg-brand-gold transition-colors px-8 py-3"
                           >
-                            Close Inquiry
+                            {language === 'ka' ? 'დახურვა' : 'Close'}
                           </Button>
                         </motion.div>
                       )}

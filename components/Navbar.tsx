@@ -6,6 +6,7 @@ import { Search, Heart, Instagram, Twitter, ArrowUpRight, X, Trash2, ArrowRight 
 import { Input } from '@/components/ui/input';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { useFavorites } from '@/src/lib/favorites';
+import { useLanguage } from '@/src/lib/i18n';
 import Link from 'next/link';
 
 interface NavbarProps {
@@ -16,12 +17,30 @@ interface NavbarProps {
 export function Navbar({ searchQuery = '', setSearchQuery }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const { favorites, removeFavorite, clearFavorites, count } = useFavorites();
+  const { language, setLanguage, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const navMenuItems = [
+    { label: t.shopAll, href: '/shop' },
+    { label: t.newArrivals, href: '/new-arrivals' },
+    { label: t.collections, href: '/collections' },
+    { label: t.journal, href: '/journal' },
+    { label: t.contact, href: '/contact' },
+  ];
+
+  const divisionItems = [
+    { name: t.hospitality, href: '/hospitality' },
+    { name: t.seating, href: '/seating' },
+    { name: t.tables, href: '/tables' },
+    { name: t.umbrellas, href: '/umbrellas' },
+    { name: t.carpets, href: '/carpets' },
+    { name: t.towels, href: '/towels' },
+  ];
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${isScrolled ? 'glass-nav py-4' : 'bg-transparent py-10'}`}>
@@ -34,32 +53,48 @@ export function Navbar({ searchQuery = '', setSearchQuery }: NavbarProps) {
                 <span className={`h-px bg-brand-ink transition-all duration-300 ${isScrolled ? 'w-5' : 'w-8'} group-hover:w-8`} />
                 <span className={`h-px bg-brand-ink transition-all duration-300 ${isScrolled ? 'w-3' : 'w-5'} group-hover:w-8`} />
               </div>
-              <span className="text-[10px] uppercase tracking-[0.2em] font-bold hidden sm:block">Menu</span>
+              <span className="text-[10px] uppercase tracking-[0.2em] font-bold hidden sm:block">{t.menu}</span>
             </SheetTrigger>
             <SheetContent side="left" className="w-full sm:max-w-md md:max-w-[500px] md:w-[500px] bg-brand-beige border-none p-8 md:p-12 flex flex-col overflow-y-auto no-scrollbar">
-              <SheetHeader className="mb-12 md:mb-16 p-0 shrink-0">
-                <div className="flex items-center gap-3">
-                  <img
-                    src="/favicon.ico"
-                    alt="Koza Logo"
-                    className="h-10 w-auto object-contain mix-blend-multiply"
-                  />
-                  <SheetTitle className="text-4xl font-display italic text-left">KOZA</SheetTitle>
+              <SheetHeader className="mb-8 md:mb-10 p-0 shrink-0">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <img
+                      src="/favicon.ico"
+                      alt="Koza Logo"
+                      className="h-10 w-auto object-contain mix-blend-multiply"
+                    />
+                    <SheetTitle className="text-4xl font-display italic text-left">KOZA</SheetTitle>
+                  </div>
+
+                  {/* Menu Language Selector */}
+                  <div className="flex items-center gap-1 bg-black/5 p-1 rounded-sm text-[10px] font-bold uppercase tracking-wider">
+                    <button
+                      onClick={() => setLanguage('en')}
+                      className={`px-2.5 py-1 transition-all ${language === 'en' ? 'bg-brand-ink text-white shadow-xs' : 'opacity-60 hover:opacity-100'}`}
+                    >
+                      EN
+                    </button>
+                    <button
+                      onClick={() => setLanguage('ka')}
+                      className={`px-2.5 py-1 transition-all ${language === 'ka' ? 'bg-brand-ink text-white shadow-xs' : 'opacity-60 hover:opacity-100'}`}
+                    >
+                      ქარ
+                    </button>
+                  </div>
                 </div>
               </SheetHeader>
+
               <div className="flex flex-col gap-6 md:gap-8 shrink-0">
-                {['Shop All', 'New Arrivals', 'Collections', 'Journal', 'Contact'].map((item, i) => (
-                  <Link
-                    key={item}
-                    href={item === 'Collections' ? '/collections' : item === 'Shop All' ? '/shop' : item === 'New Arrivals' ? '/new-arrivals' : item === 'Contact' ? '/contact' : item === 'Journal' ? '/journal' : '#'}
-                  >
+                {navMenuItems.map((item, i) => (
+                  <Link key={item.href} href={item.href}>
                     <motion.div
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: i * 0.1 }}
                       className="text-3xl sm:text-4xl font-display hover:italic hover:translate-x-4 transition-all duration-500 flex items-center justify-between group whitespace-nowrap"
                     >
-                      <span>{item}</span>
+                      <span>{item.label}</span>
                       <ArrowUpRight className="w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity shrink-0 ml-4" />
                     </motion.div>
                   </Link>
@@ -68,17 +103,10 @@ export function Navbar({ searchQuery = '', setSearchQuery }: NavbarProps) {
 
               <div className="pt-8 mt-4 border-t border-black/5 shrink-0">
                 <span className="text-[9px] uppercase tracking-[0.3em] font-bold opacity-30 block mb-4">
-                  Curated Guild Divisions
+                  {t.curatedDivisions}
                 </span>
                 <div className="grid grid-cols-2 gap-y-3 gap-x-6">
-                  {[
-                    { name: 'Hospitality', href: '/hospitality' },
-                    { name: 'Seating', href: '/seating' },
-                    { name: 'Tables', href: '/tables' },
-                    { name: 'Umbrellas', href: '/umbrellas' },
-                    { name: 'Carpets', href: '/carpets' },
-                    { name: 'Towels', href: '/towels' },
-                  ].map((div) => (
+                  {divisionItems.map((div) => (
                     <Link
                       key={div.name}
                       href={div.href}
@@ -92,28 +120,22 @@ export function Navbar({ searchQuery = '', setSearchQuery }: NavbarProps) {
 
               <div className="mt-8 pt-8 md:mt-auto md:pt-12 border-t border-black/5 grid grid-cols-2 gap-8 shrink-0">
                 <div>
-                  <h6 className="text-[10px] uppercase tracking-widest font-bold mb-4">Follow Us</h6>
+                  <h6 className="text-[10px] uppercase tracking-widest font-bold mb-4">{t.followUs}</h6>
                   <div className="flex gap-4 opacity-60">
                     <Instagram className="w-4 h-4 cursor-pointer hover:text-brand-gold transition-colors" />
                     <Twitter className="w-4 h-4 cursor-pointer hover:text-brand-gold transition-colors" />
                   </div>
                 </div>
                 <div>
-                  <h6 className="text-[10px] uppercase tracking-widest font-bold mb-4">Visit Us</h6>
-                  <p className="text-xs opacity-60 leading-relaxed">Giorgi Guramishvili Street No:2,<br />Tbilisi, GE</p>
+                  <h6 className="text-[10px] uppercase tracking-widest font-bold mb-4">{t.visitUs}</h6>
+                  <p className="text-xs opacity-60 leading-relaxed">{t.address}</p>
                 </div>
               </div>
             </SheetContent>
           </Sheet>
 
           <div className="hidden lg:flex items-center gap-8">
-            {[
-              { name: 'Hospitality', href: '/hospitality' },
-              { name: 'Seating', href: '/seating' },
-              { name: 'Tables', href: '/tables' },
-              { name: 'Umbrellas', href: '/umbrellas' },
-              { name: 'Carpets', href: '/carpets' },
-            ].map((item) => (
+            {divisionItems.slice(0, 5).map((item) => (
               <Link 
                 key={item.name} 
                 href={item.href} 
@@ -130,10 +152,37 @@ export function Navbar({ searchQuery = '', setSearchQuery }: NavbarProps) {
         </Link>
 
         <div className="flex items-center gap-6">
+          {/* Desktop Language Switcher */}
+          <div className="hidden sm:flex items-center text-[10px] uppercase tracking-widest font-bold border border-black/10 rounded-xs px-2 py-1 bg-white/40 backdrop-blur-xs">
+            <button
+              onClick={() => setLanguage('en')}
+              className={`px-1.5 py-0.5 transition-all cursor-pointer ${
+                language === 'en'
+                  ? 'text-brand-ink font-black border-b border-brand-gold'
+                  : 'opacity-40 hover:opacity-100 hover:text-brand-gold'
+              }`}
+              title="English"
+            >
+              EN
+            </button>
+            <span className="opacity-20 mx-0.5">/</span>
+            <button
+              onClick={() => setLanguage('ka')}
+              className={`px-1.5 py-0.5 transition-all cursor-pointer ${
+                language === 'ka'
+                  ? 'text-brand-ink font-black border-b border-brand-gold'
+                  : 'opacity-40 hover:opacity-100 hover:text-brand-gold'
+              }`}
+              title="ქართული (Georgian)"
+            >
+              ქარ
+            </button>
+          </div>
+
           <div className="hidden md:flex items-center relative group">
             <Search className="w-4 h-4 absolute left-0 opacity-40 group-focus-within:text-brand-gold transition-colors" />
             <Input
-              placeholder="Search pieces..."
+              placeholder={t.searchPlaceholder}
               className="pl-8 w-32 focus:w-48 bg-transparent border-none focus-visible:ring-0 placeholder:text-[10px] placeholder:uppercase placeholder:tracking-widest transition-all duration-500"
               value={searchQuery}
               onChange={(e) => setSearchQuery?.(e.target.value)}
@@ -162,27 +211,27 @@ export function Navbar({ searchQuery = '', setSearchQuery }: NavbarProps) {
                   <div className="flex items-center justify-between">
                     <div>
                       <span className="text-[9px] uppercase tracking-[0.3em] font-bold text-brand-gold block mb-1">
-                        Architectural Shortlist
+                        {t.shortlistTitle}
                       </span>
                       <SheetTitle className="text-3xl md:text-4xl font-display italic text-left">
-                        Favorites
+                        {t.favorites}
                       </SheetTitle>
                     </div>
                     {count > 0 && (
                       <button
                         onClick={() => clearFavorites()}
                         className="text-[9px] uppercase tracking-widest font-bold opacity-40 hover:opacity-100 hover:text-red-600 transition-colors flex items-center gap-1.5"
-                        title="Clear all favorites"
+                        title={t.clearAll}
                       >
                         <Trash2 className="w-3 h-3" />
-                        Clear All
+                        {t.clearAll}
                       </button>
                     )}
                   </div>
                   <p className="text-xs font-serif opacity-60 mt-2">
                     {count === 0
-                      ? 'No pieces shortlisted yet.'
-                      : `${count} ${count === 1 ? 'piece' : 'pieces'} curated for project review and specifications.`}
+                      ? t.noFavoritesYet
+                      : `${count} ${count === 1 ? t.piecesShortlistedSingular : t.piecesShortlistedPlural} ${t.shortlistDescSuffix}`}
                   </p>
                 </SheetHeader>
 
@@ -240,15 +289,19 @@ export function Navbar({ searchQuery = '', setSearchQuery }: NavbarProps) {
                       <div className="w-14 h-14 rounded-full bg-brand-ink/5 flex items-center justify-center text-brand-ink/30 mb-6">
                         <Heart className="w-6 h-6" />
                       </div>
-                      <h5 className="text-xl font-display mb-2">Your Shortlist is Empty</h5>
+                      <h5 className="text-xl font-display mb-2">
+                        {language === 'ka' ? 'რჩეულების სია ცარიელია' : 'Your Shortlist is Empty'}
+                      </h5>
                       <p className="text-xs font-serif opacity-60 max-w-xs leading-relaxed mb-8">
-                        Explore our commercial seating, contract carpets, bespoke tables, and Aegean textiles to curate your project.
+                        {language === 'ka' 
+                          ? 'დაათვალიერეთ ჩვენი სკამები, ხალიჩები, მაგიდები და ქოლგები თქვენი პროექტის შესაქმნელად.'
+                          : 'Explore our commercial seating, contract carpets, bespoke tables, and Aegean textiles to curate your project.'}
                       </p>
                       <Link
                         href="/collections"
                         className="inline-flex items-center gap-2 px-6 py-3 bg-brand-ink text-white text-[10px] uppercase tracking-widest font-bold hover:bg-brand-gold transition-colors shadow-sm"
                       >
-                        Explore Collections
+                        {language === 'ka' ? 'კოლექციების ნახვა' : 'Explore Collections'}
                         <ArrowRight className="w-3.5 h-3.5" />
                       </Link>
                     </div>
@@ -263,11 +316,13 @@ export function Navbar({ searchQuery = '', setSearchQuery }: NavbarProps) {
                     href={`/contact?subject=${encodeURIComponent('Shortlist Specification Inquiry (' + favorites.map(f => f.name).join(', ') + ')')}`}
                     className="w-full flex items-center justify-center gap-3 py-4 bg-brand-ink text-white text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-brand-gold transition-all duration-300 shadow-md"
                   >
-                    <span>Request Spec & Quote ({count})</span>
+                    <span>{language === 'ka' ? `სპეციფიკაციისა და ფასის მოთხოვნა (${count})` : `Request Spec & Quote (${count})`}</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                   <p className="text-[10px] font-serif text-center opacity-40">
-                    Includes CAD blocks, finish samples, and contract pricing.
+                    {language === 'ka' 
+                      ? 'მოიცავს CAD ბლოკებს, მასალების ნიმუშებსა და კორპორატიულ ფასებს.'
+                      : 'Includes CAD blocks, finish samples, and contract pricing.'}
                   </p>
                 </div>
               )}

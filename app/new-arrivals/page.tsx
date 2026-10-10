@@ -5,10 +5,12 @@ import { motion, useScroll, useTransform } from 'motion/react';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { ProductExplorer } from '@/components/ProductExplorer';
+import { useLanguage } from '@/src/lib/i18n';
 
 export default function NewArrivalsPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const { scrollYProgress } = useScroll();
+  const { t, language } = useLanguage();
 
   return (
     <div className="min-h-screen flex flex-col bg-brand-beige selection:bg-brand-gold selection:text-white">
@@ -37,12 +39,22 @@ export default function NewArrivalsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, ease: [0.23, 1, 0.32, 1] }}
           >
-            <span className="text-[10px] uppercase tracking-[0.5em] font-semibold mb-6 block text-brand-gold drop-shadow-sm">Just Released</span>
+            <span className="text-[10px] uppercase tracking-[0.5em] font-semibold mb-6 block text-brand-gold drop-shadow-sm">
+              {t.justReleased}
+            </span>
             <h1 className="text-6xl md:text-8xl font-display leading-[0.9] tracking-tighter drop-shadow-[0_4px_24px_rgba(0,0,0,0.45)]">
-              The <span className="italic font-normal">Latest</span> <br /> Masterpieces
+              {language === 'ka' ? (
+                <>
+                  უახლესი <br /> <span className="italic font-normal">შედევრები</span>
+                </>
+              ) : (
+                <>
+                  The <span className="italic font-normal">Latest</span> <br /> Masterpieces
+                </>
+              )}
             </h1>
             <p className="text-xs md:text-sm font-serif opacity-90 max-w-md mx-auto mt-6 leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] tracking-wide">
-              An avant-garde curation of newly released furnishings, crafted for the modern sanctuary.
+              {t.newArrivalsTagline}
             </p>
           </motion.div>
         </div>
