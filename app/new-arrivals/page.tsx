@@ -21,11 +21,14 @@ export default function NewArrivalsPage() {
            className="absolute inset-0 z-0"
         >
           <img
-            src="https://images.unsplash.com/photo-1600607688969-a5bfcd64bd0b?q=80&w=2000&auto=format&fit=crop"
-            alt="New Releases"
-            className="w-full h-full object-cover opacity-60 grayscale-[0.2]"
-            referrerPolicy="no-referrer"
+            src="/new_arrivals_hero.jpg"
+            alt="New Releases Showcase"
+            className="w-full h-full object-cover object-center"
+            loading="eager"
+            fetchPriority="high"
           />
+          {/* Subtle ambient overlay to ensure perfect contrast for both navbar on top and headline in center */}
+          <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-black/20 to-black/50" />
         </motion.div>
 
         <div className="container mx-auto px-6 relative z-10 text-center text-white">
@@ -34,10 +37,13 @@ export default function NewArrivalsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, ease: [0.23, 1, 0.32, 1] }}
           >
-            <span className="text-[10px] uppercase tracking-[0.5em] font-medium mb-6 block text-brand-gold">Just Released</span>
-            <h1 className="text-6xl md:text-8xl font-display leading-[0.9] tracking-tighter">
+            <span className="text-[10px] uppercase tracking-[0.5em] font-semibold mb-6 block text-brand-gold drop-shadow-sm">Just Released</span>
+            <h1 className="text-6xl md:text-8xl font-display leading-[0.9] tracking-tighter drop-shadow-[0_4px_24px_rgba(0,0,0,0.45)]">
               The <span className="italic font-normal">Latest</span> <br /> Masterpieces
             </h1>
+            <p className="text-xs md:text-sm font-serif opacity-90 max-w-md mx-auto mt-6 leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] tracking-wide">
+              An avant-garde curation of newly released furnishings, crafted for the modern sanctuary.
+            </p>
           </motion.div>
         </div>
         
