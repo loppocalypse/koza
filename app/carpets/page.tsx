@@ -21,9 +21,9 @@ export default function CarpetsPage() {
            className="absolute inset-0 z-0"
         >
           <img
-            src="https://images.unsplash.com/photo-1600166898405-da9535204843?q=80&w=2000&auto=format&fit=crop"
+            src="/album/WhatsApp Image 2026-06-17 at 08.40.31.jpeg"
             alt="Artisan Carpets"
-            className="w-full h-full object-cover opacity-50"
+            className="w-full h-full object-cover opacity-60"
             referrerPolicy="no-referrer"
           />
         </motion.div>

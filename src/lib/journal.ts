@@ -21,14 +21,14 @@ export function getJournalCategoryLabel(category: string, isGeorgian: boolean): 
   if (!isGeorgian) return category;
   switch (category) {
     case 'All': return 'ყველა';
-    case 'Commercial Commission': return 'კომერციული შეკვეთა';
+    case 'Commercial Architecture': return 'კომერციული არქიტექტურა';
     case 'Hospitality Interior': return 'სასტუმროს ინტერიერი';
-    case 'Corporate Architecture': return 'კორპორატიული არქიტექტურა';
-    case 'On-Site Walkthrough': return 'ვიდეო მიმოხილვა';
+    case 'Corporate Commission': return 'კორპორატიული შეკვეთა';
     case 'Spatial Design': return 'სივრცითი დიზაინი';
     case 'Project Showcase': return 'პროექტის პრეზენტაცია';
+    case 'On-Site Walkthrough': return 'ვიდეო მიმოხილვა';
+    case 'Biophilic Architecture': return 'ბიოფილიური არქიტექტურა';
     case 'Materials & Craft': return 'მასალები & ოსტატობა';
-    case 'Interior Architecture': return 'ინტერიერის არქიტექტურა';
     default: return category;
   }
 }
@@ -36,124 +36,132 @@ export function getJournalCategoryLabel(category: string, isGeorgian: boolean): 
 export const MOCK_ARTICLES: JournalArticle[] = [
   {
     id: '1',
-    category: 'Commercial Commission',
-    category_ka: 'კომერციული შეკვეთა',
-    readTime: '5 Min Read',
-    readTime_ka: '5 წთ საკითხავი',
-    title: 'Corporate Headquarters: Custom Acoustic Carpet Architecture for Coca-Cola',
-    title_ka: 'კორპორატიული სათავო ოფისი: ინდივიდუალური აკუსტიკური ხალიჩის არქიტექტურა Coca-Cola-სთვის',
-    excerpt: 'A bespoke corporate transformation integrating precision quarter-turn linear acoustic carpet tiles with contemporary architectural concrete, lush interior planters, and corporate branding.',
-    excerpt_ka: 'ინდივიდუალური კორპორატიული ტრანსფორმაცია, რომელიც აერთიანებს ზუსტი ხაზოვანი აკუსტიკური ხალიჩის ფილებს თანამედროვე არქიტექტურულ ბეტონთან, ცოცხალ მცენარეებთან და ბრენდინგთან.',
-    image_url: '/album/WhatsApp Image 2026-06-17 at 08.46.13 (7).jpeg',
-    location: 'Tbilisi HQ',
-    location_ka: 'თბილისის სათავო ოფისი',
-    client: 'Coca-Cola',
-    client_ka: 'Coca-Cola'
+    category: 'Commercial Architecture',
+    category_ka: 'კომერციული არქიტექტურა',
+    readTime: '4 Min Read',
+    readTime_ka: '4 წთ საკითხავი',
+    title: 'Contemporary Corporate Atrium: Directional Acoustic Carpet Tile Systems',
+    title_ka: 'თანამედროვე კორპორატიული ატრიუმი: მიმართულებითი აკუსტიკური ხალიჩის ფილების სისტემები',
+    excerpt: 'Quarter-turn alternating linear loop carpet tiles engineered for heavy commercial traffic, providing superior acoustic dampening and a sleek monochrome architectural floor texture.',
+    excerpt_ka: '90-გრადუსიანი მონაცვლეობით დაგებული ხაზოვანი აკუსტიკური ხალიჩის ფილები მაღალი დატვირთვის კომერციული სივრცეებისთვის, რაც უზრუნველყოფს ბგერის იზოლაციას და დახვეწილ მონოქრომულ ტექსტურას.',
+    image_url: '/album/WhatsApp Image 2026-06-17 at 08.46.13 (1).jpeg',
+    location: 'Central Atrium Pavilion',
+    location_ka: 'ცენტრალური ატრიუმის პავილიონი',
+    client: 'Metropolitan Financial Center',
+    client_ka: 'მეტროპოლიტენ ფინანსური ცენტრი'
   },
   {
     id: '2',
     category: 'Hospitality Interior',
     category_ka: 'სასტუმროს ინტერიერი',
-    readTime: '4 Min Read',
-    readTime_ka: '4 წთ საკითხავი',
-    title: 'Alpine Sanctuary: Wool-Blend Ribbed Carpeting Overlooking Snowy Pines',
-    title_ka: 'ალპური თავშესაფარი: შალის ნაზავის რელიეფური ხალიჩა დათოვლილი ფიჭვების ხედით',
-    excerpt: 'Softening brutalist floorplans through deeply textured, earth-toned striated wool carpeting that extends naturally toward floor-to-ceiling panoramic mountain terrace glass.',
-    excerpt_ka: 'ბრუტალისტური სივრცეების შერბილება ღრმად ტექსტურირებული, მიწისფერი შალის ხალიჩით, რომელიც ბუნებრივად ერწყმის პანორამულ მთის ტერასას.',
-    image_url: '/album/WhatsApp Image 2026-06-17 at 08.47.25.jpeg',
-    location: 'Gudauri Mountain Resort',
-    location_ka: 'გუდაურის სამთო კურორტი',
-    client: 'Alpine Hotel Suites',
-    client_ka: 'Alpine Hotel Suites'
+    readTime: '5 Min Read',
+    readTime_ka: '5 წთ საკითხავი',
+    title: 'Alpine Panoramic Suite: Ribbed Wool-Blend Broadloom Overlooking Snowy Pines',
+    title_ka: 'ალპური პანორამული სუიტი: შალის ნაზავის რელიეფური ხალიჩა დათოვლილი ფიჭვების ხედით',
+    excerpt: 'Softening luxury mountain suites through deeply textured, natural earth-toned striated wool carpeting that extends seamlessly toward floor-to-ceiling panoramic terrace glass.',
+    excerpt_ka: 'მთის ბუტიკ-სასტუმროს სუიტების შერბილება ღრმად ტექსტურირებული, ბუნებრივი მიწისფერი შალის ხალიჩით, რომელიც ჰარმონიულად ერწყმის პანორამულ მინის აივანს.',
+    image_url: '/album/WhatsApp Image 2026-06-17 at 08.47.25 (1).jpeg',
+    location: 'Alpine Summit Chalet',
+    location_ka: 'ალპური სამთო შალე',
+    client: 'Mount Panorama Resort',
+    client_ka: 'მთა პანორამა რეზორტი'
   },
   {
     id: '3',
-    category: 'Corporate Architecture',
-    category_ka: 'კორპორატიული არქიტექტურა',
-    readTime: '7 Min Read',
-    readTime_ka: '7 წთ საკითხავი',
-    title: 'Executive Boardroom Architecture: Sound Absorption & Monumental Scale',
-    title_ka: 'მმართველთა საბჭოს დარბაზი: ბგერის შთანთქმა & მონუმენტური მასშტაბი',
-    excerpt: 'Equipping high-profile conference halls with heavy-traffic textured modular tile systems engineered for superior acoustic dampening and effortless spatial refinement.',
-    excerpt_ka: 'მაღალი კლასის საკონფერენციო დარბაზების აღჭურვა მაღალი დატვირთვის მოდულური ფილების სისტემით, შექმნილი უმაღლესი აკუსტიკური იზოლაციისა და ელეგანტურობისთვის.',
-    image_url: '/album/WhatsApp Image 2026-06-17 at 08.40.09.jpeg',
-    location: 'Executive Wing',
-    location_ka: 'ადმინისტრაციული ფლიგელი',
-    client: 'Conference Facility',
-    client_ka: 'საკონფერენციო ცენტრი'
+    category: 'Corporate Commission',
+    category_ka: 'კორპორატიული შეკვეთა',
+    readTime: '5 Min Read',
+    readTime_ka: '5 წთ საკითხავი',
+    title: 'Executive Boardroom Architecture: Acoustic Modulation Under Monumental Scales',
+    title_ka: 'მმართველთა საბჭოს დარბაზი: აკუსტიკური მოდულაცია მონუმენტური მასშტაბებისთვის',
+    excerpt: 'Equipping high-profile conference halls with heavy-traffic textured modular tile systems beneath expansive meeting tables, optimizing speech clarity and spatial poise.',
+    excerpt_ka: 'მაღალი კლასის საკონფერენციო დარბაზების აღჭურვა მაღალი დატვირთვის მოდულური ფილებით დიდი მაგიდების ქვეშ, რაც აუმჯობესებს მეტყველების სიცხადესა და სივრცის ესთეტიკას.',
+    image_url: '/album/WhatsApp Image 2026-06-17 at 08.40.08.jpeg',
+    location: 'Executive Summit Hall',
+    location_ka: 'მმართველთა სამიტის დარბაზი',
+    client: 'International Congress Center',
+    client_ka: 'საერთაშორისო საკონგრესო ცენტრი'
   },
   {
     id: '4',
+    category: 'Spatial Design',
+    category_ka: 'სივრცითი დიზაინი',
+    readTime: '4 Min Read',
+    readTime_ka: '4 წთ საკითხავი',
+    title: 'Minimalist Office Circulation: Seamless Linear Loop Tile Corridors',
+    title_ka: 'მინიმალისტური ოფისის ნავიგაცია: უწყვეტი ხაზოვანი ფილების დერეფნები',
+    excerpt: 'Directional grey linear carpet tiles guiding guest movement through private executive suites, acoustic partitions, and sunlit transition lounges.',
+    excerpt_ka: 'ნაცრისფერი ხაზოვანი ხალიჩის ფილები, რომლებიც წარმართავს მოძრაობას კაბინეტებს, აკუსტიკურ ტიხრებსა და მზით განათებულ მოსასვენებელ სივრცეებს შორის.',
+    image_url: '/album/WhatsApp Image 2026-06-17 at 08.46.13 (3).jpeg',
+    location: 'Commerce Suite Wing',
+    location_ka: 'ბიზნეს სუიტების ფლიგელი',
+    client: 'Metropolitan Commercial Guild',
+    client_ka: 'მეტროპოლიტენ ბიზნეს გილდია'
+  },
+  {
+    id: '5',
+    category: 'Project Showcase',
+    category_ka: 'პროექტის პრეზენტაცია',
+    readTime: '4 Min Read',
+    readTime_ka: '4 წთ საკითხავი',
+    title: 'Grand Gala Hall: Mirrored Architecture Reflecting Geometric Floor Weaves',
+    title_ka: 'საზეიმო დარბაზი: სარკისებრი არქიტექტურა და გეომეტრიული იატაკის ორნამენტები',
+    excerpt: 'An expansive celebration hall where full-height mirrored columns multiply ambient illumination across interlocking textured carpet tiles, elevating the event experience.',
+    excerpt_ka: 'ვრცელი საზეიმო დარბაზი, სადაც სრულსიმაღლიანი სარკისებრი სვეტები ამრავლებს სინათლეს ურთიერთდაკავშირებულ ტექსტურულ ხალიჩის ფილებზე.',
+    image_url: '/album/WhatsApp Image 2026-06-17 at 08.40.31.jpeg',
+    location: 'Civic Cultural Center',
+    location_ka: 'საქალაქო კულტურული ცენტრი',
+    client: 'Grand Gala & Banquet Pavilion',
+    client_ka: 'საზეიმო & გალა პავილიონი'
+  },
+  {
+    id: '6',
     category: 'On-Site Walkthrough',
     category_ka: 'ვიდეო მიმოხილვა',
     readTime: '3 Min Watch',
     readTime_ka: '3 წთ სანახავად',
-    title: 'Hospitality Wayfinding: Seamless Corridor Flow & Geometric Tile Layout',
-    title_ka: 'სასტუმროს ნავიგაცია: უწყვეტი კორიდორების დინება & გეომეტრიული ფილების განლაგება',
-    excerpt: 'A continuous walkthrough capturing how textured modular flooring guides guest circulation through executive corridors, frosted glass doors, and sunlit transition lounges.',
-    excerpt_ka: 'ვიდეო მიმოხილვა, თუ როგორ წარმართავს ტექსტურირებული მოდულური იატაკი სტუმრების გადაადგილებას დერეფნებსა და მზით განათებულ ლაუნჯებში.',
+    title: 'Hospitality Wayfinding: Seamless Hotel Corridor Circulation & Herringbone Lay',
+    title_ka: 'სასტუმროს ნავიგაცია: დერეფნების უწყვეტი დინება & ფრანგული ნაძვისებრი განლაგება',
+    excerpt: 'A continuous walkthrough capturing how multi-tonal modular flooring guides guest circulation through executive wings, frosted glass portals, and transition lounges.',
+    excerpt_ka: 'ვიდეო მიმოხილვა, თუ როგორ წარმართავს მრავალტონიანი მოდულური იატაკი სტუმრების გადაადგილებას დერეფნებსა და მზით განათებულ სივრცეებში.',
     media_type: 'video',
     video_url: '/album/WhatsApp Video 2026-06-17 at 08.40.48.mp4',
     image_url: '/album/WhatsApp Image 2026-06-17 at 08.40.14.jpeg',
-    location: 'Hotel Administration & Wings',
-    location_ka: 'სასტუმროს ადმინისტრაცია & ფლიგელი'
-  },
-  {
-    id: '5',
-    category: 'Spatial Design',
-    category_ka: 'სივრცითი დიზაინი',
-    readTime: '5 Min Read',
-    readTime_ka: '5 წთ საკითხავი',
-    title: 'Biophilic Balance: Framing Bamboo Groves Through Earthy Woven Geometry',
-    title_ka: 'ბიოფილიური ბალანსი: ბამბუკის ხედების ჩარჩოება მიწისფერი გეომეტრიული ქსოვილებით',
-    excerpt: 'Harmonizing natural outdoor greenery with multi-tonal earthy carpet tiles, creating visual serenity across expansive sun-drenched event halls.',
-    excerpt_ka: 'გარე ბუნებრივი სიმწვანისა და მრავალტონიანი მიწისფერი ხალიჩის ფილების ჰარმონია, რომელიც ქმნის ვიზუალურ სიმშვიდეს ვრცელ საზეიმო დარბაზებში.',
-    image_url: '/album/WhatsApp Image 2026-06-17 at 08.40.27.jpeg',
-    location: 'Garden Pavilion',
-    location_ka: 'ბაღის პავილიონი'
-  },
-  {
-    id: '6',
-    category: 'Project Showcase',
-    category_ka: 'პროექტის პრეზენტაცია',
-    readTime: '4 Min Watch',
-    readTime_ka: '4 წთ სანახავად',
-    title: 'Grand Scale Refinement: Mirrored Columns & Sweeping Herringbone Geometry',
-    title_ka: 'დიდი მასშტაბის სინატიფე: სარკისებრი სვეტები & ფრანგული ნაძვისებრი გეომეტრია',
-    excerpt: 'Watch the full architectural pan across a grand banquet hall where mirror-clad pillars reflect interlocking textured tiles bathed in recessed ambient lighting.',
-    excerpt_ka: 'უყურეთ სრულ არქიტექტურულ მიმოხილვას საზეიმო დარბაზში, სადაც სარკეები ირეკლავს ურთიერთდაკავშირებულ ტექსტურირებულ ფილებსა და ჩაშენებულ განათებას.',
-    media_type: 'video',
-    video_url: '/album/WhatsApp Video 2026-06-17 at 08.41.16.mp4',
-    image_url: '/album/WhatsApp Image 2026-06-17 at 08.40.31.jpeg',
-    location: 'Grand Event Center',
-    location_ka: 'მთავარი ივენთ ცენტრი'
+    location: 'Suites & Residential Wings',
+    location_ka: 'სასტუმროს სუიტები & ფლიგელი',
+    client: 'Heritage Boutique Hotel',
+    client_ka: 'ჰერიტიჯ ბუტიკ სასტუმრო'
   },
   {
     id: '7',
+    category: 'Biophilic Architecture',
+    category_ka: 'ბიოფილიური არქიტექტურა',
+    readTime: '4 Min Read',
+    readTime_ka: '4 წთ საკითხავი',
+    title: 'Biophilic Event Pavilion: Framing Bamboo Groves Through Earthy Modular Weaves',
+    title_ka: 'ბიოფილიური პავილიონი: ბამბუკის ხედების ჩარჩოება მიწისფერი მოდულური ქსოვილებით',
+    excerpt: 'Harmonizing natural outdoor greenery with multi-tonal earthy carpet tiles, creating visual serenity across expansive sun-drenched event suites.',
+    excerpt_ka: 'გარე ბუნებრივი სიმწვანისა და მრავალტონიანი მიწისფერი ხალიჩის ფილების ჰარმონია, რომელიც ქმნის ვიზუალურ სიმშვიდეს ვრცელ საზეიმო დარბაზებში.',
+    image_url: '/album/WhatsApp Image 2026-06-17 at 08.40.24.jpeg',
+    location: 'Conservatory Pavilion',
+    location_ka: 'ორანჟერეის პავილიონი',
+    client: 'Botanical Glasshouse Conservatory',
+    client_ka: 'ბოტანიკური ორანჟერეა'
+  },
+  {
+    id: '8',
     category: 'Materials & Craft',
     category_ka: 'მასალები & ოსტატობა',
     readTime: '3 Min Read',
     readTime_ka: '3 წთ საკითხავი',
-    title: 'Material Anatomy: The Resilient Architecture of Multi-Tonal Tile Weaves',
-    title_ka: 'მასალის ანატომია: მრავალტონიანი ნაქსოვი ფილების გამძლე არქიტექტურა',
-    excerpt: 'A macro study into yarn composition, abrasion resistance, and organic variegated coloring designed to disguise heavy commercial foot traffic.',
-    excerpt_ka: 'ძაფის შემადგენლობის, ცვეთისადმი გამძლეობისა და ორგანული შეფერილობის მაკრო ანალიზი, შექმნილი მაღალი ინტენსივობის მოძრაობისთვის.',
-    image_url: '/album/WhatsApp Image 2026-06-17 at 08.40.42.jpeg',
-    location: 'Craft Studio',
-    location_ka: 'ოსტატობის სტუდია'
-  },
-  {
-    id: '8',
-    category: 'Interior Architecture',
-    category_ka: 'ინტერიერის არქიტექტურა',
-    readTime: '4 Min Read',
-    readTime_ka: '4 წთ საკითხავი',
-    title: 'Lobby & Lounge Dynamics: Quarter-Turn Tile Patterns in Commercial Spaces',
-    title_ka: 'ფოიესა და ლაუნჯის დინამიკა: ფილების 90-გრადუსიანი განლაგება კომერციულ სივრცეებში',
-    excerpt: 'Creating subtle rhythmic depth in large reception areas through alternating grain directions, complemented by sculptural lounge seating.',
-    excerpt_ka: 'რითმული სიღრმის შექმნა დიდ მისაღებ სივრცეებში მიმართულებების მონაცვლეობით, შეხამებული სკულპტურულ ავეჯთან.',
-    image_url: '/album/WhatsApp Image 2026-06-17 at 08.46.13 (2).jpeg',
-    location: 'Corporate Atrium',
-    location_ka: 'კორპორატიული ატრიუმი'
+    title: 'Material Transition Architecture: Acoustic Tile to Hardwood Border Systems',
+    title_ka: 'მასალათა გადასვლის არქიტექტურა: აკუსტიკური ფილებიდან ხის იატაკზე გადასვლა',
+    excerpt: 'Precision junction detailing between high-density acoustic linear carpet tiles and natural timber flooring across executive office thresholds.',
+    excerpt_ka: 'ზუსტი შეერთების დეტალიზაცია მაღალი სიმკვრივის აკუსტიკურ ხაზოვან ხალიჩის ფილებსა და ბუნებრივ ხის იატაკს შორის კაბინეტების ზღურბლზე.',
+    image_url: '/album/WhatsApp Image 2026-06-17 at 08.46.12 (1).jpeg',
+    location: 'Design & Materials Lab',
+    location_ka: 'დიზაინისა და მასალების ლაბორატორია',
+    client: 'Architectural Craft Guild',
+    client_ka: 'არქიტექტურული გილდია'
   }
 ];

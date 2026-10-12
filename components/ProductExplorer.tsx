@@ -72,7 +72,7 @@ export const BRANDS: Record<string, BrandInfo> = {
     subtitle: 'Contract & Protocol Woven Guild',
     origin: 'Ankara, Turkey • Est. 1973',
     description: 'High-density contract broadloom, wool-blend protocol floor coverings, and architectural acoustic carpet tile systems.',
-    heroImage: '/broadloom_samur.jpg',
+    heroImage: '/album/WhatsApp Image 2026-06-17 at 08.40.31.jpeg',
     categories: ['Rugs']
   },
   'Ormel': {
@@ -116,6 +116,7 @@ export function getProductBrand(product: Product): string {
   }
   if (
     img.toLowerCase().includes('samur') ||
+    img.includes('/album/') ||
     name.toLowerCase().includes('samur') ||
     ['The Tile', 'Protocol', 'Broadloom', 'Bradloom'].includes(col)
   ) {

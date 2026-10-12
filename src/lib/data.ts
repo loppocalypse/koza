@@ -1,9 +1,6 @@
 import Rattan from '@/public/rattan_siesta.jpg';
 import Contract from '@/public/contract_siesta.jpg';
 import Garden from '@/public/garden_siesta.jpg';
-import TheTile from '@/public/tile_samur.jpg';
-import Protocol from '@/public/protocol_samur.jpg';
-import Broadloom from '@/public/broadloom_samur.jpg';
 import Beach from '@/public/beach_umbrella.jpg';
 import Telescopic from '@/public/telescopic_umbrella.jpg';
 import SideArm from '@/public/sidearm_umbrella.jpg';
@@ -21,9 +18,9 @@ export const collections: CollectionItem[] = [
   { name: "Contract", image: Contract.src, brand: "Siesta", category: "Seating" },
   { name: "Rattan", image: Rattan.src, brand: "Siesta", category: "Seating" },
   { name: "Garden", image: Garden.src, brand: "Siesta", category: "Seating" },
-  { name: "The Tile", image: TheTile.src, brand: "Samur", category: "Rugs" },
-  { name: "Protocol", image: Protocol.src, brand: "Samur", category: "Rugs" },
-  { name: "Broadloom", image: Broadloom.src, brand: "Samur", category: "Rugs" },
+  { name: "The Tile", image: "/album/WhatsApp Image 2026-06-17 at 08.40.08.jpeg", brand: "Samur", category: "Rugs" },
+  { name: "Protocol", image: "/album/WhatsApp Image 2026-06-17 at 08.40.31.jpeg", brand: "Samur", category: "Rugs" },
+  { name: "Broadloom", image: "/album/WhatsApp Image 2026-06-17 at 08.47.25 (1).jpeg", brand: "Samur", category: "Rugs" },
   { name: "Beach", image: Beach.src, brand: "Şemsiye Evi", category: "Umbrellas" },
   { name: "Telescopic", image: Telescopic.src, brand: "Şemsiye Evi", category: "Umbrellas" },
   { name: "Side-Arm", image: SideArm.src, brand: "Şemsiye Evi", category: "Umbrellas" },
