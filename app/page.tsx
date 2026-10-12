@@ -127,10 +127,12 @@ export default function App() {
                 {t.heroTagline}
               </p>
               <div className="h-px w-12 bg-white/20 hidden md:block" />
-              <Button className="bg-white text-brand-ink hover:bg-brand-gold hover:text-white rounded-none px-10 py-8 h-auto text-[10px] uppercase tracking-[0.2em] font-bold transition-all duration-500 group">
-                <a href="/collections">{t.shopCollection}</a>
-                <ArrowRight className="ml-3 w-4 h-4 group-hover:translate-x-2 transition-transform" />
-              </Button>
+              <Link href="/collections">
+                <Button className="bg-white text-brand-ink hover:bg-brand-gold hover:text-white rounded-none px-10 py-8 h-auto text-[10px] uppercase tracking-[0.2em] font-bold transition-all duration-500 group cursor-pointer">
+                  <span>{t.shopCollection}</span>
+                  <ArrowRight className="ml-3 w-4 h-4 group-hover:translate-x-2 transition-transform" />
+                </Button>
+              </Link>
             </div>
           </motion.div>
         </div>
@@ -182,8 +184,9 @@ export default function App() {
               transition={{ duration: isResetting ? 0 : 1.2, ease: isResetting ? "linear" : [0.16, 1, 0.3, 1] }}
             >
               {[...collections, ...collections].map((col, i) => (
-                <div
+                <Link
                   key={`${col.name}-${i}`}
+                  href="/collections"
                   className="group cursor-pointer flex-shrink-0"
                   style={{ width: "var(--card-w)" }}
                 >
@@ -193,7 +196,7 @@ export default function App() {
                     <div className="absolute bottom-8 left-8 right-8 flex justify-between items-end opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
                       <span className="text-white text-xs uppercase tracking-widest font-bold">View Series</span>
                       <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
-                        <Link href={"./collections"}><ArrowRight className="w-4 h-4 text-brand-ink" /></Link>
+                        <ArrowRight className="w-4 h-4 text-brand-ink" />
                       </div>
                     </div>
                   </div>
@@ -201,7 +204,7 @@ export default function App() {
                   <p className="text-[10px] uppercase tracking-widest opacity-40 mt-2">
                     {String((i % collections.length) + 1).padStart(2, '0')} — Collection
                   </p>
-                </div>
+                </Link>
               ))}
             </motion.div>
           </div>

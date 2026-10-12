@@ -75,15 +75,6 @@ export const BRANDS: Record<string, BrandInfo> = {
     heroImage: '/broadloom_samur.jpg',
     categories: ['Rugs']
   },
-  'Koza Studio': {
-    id: 'Koza Studio',
-    name: 'Koza Studio',
-    subtitle: 'In-House Curated Editions',
-    origin: 'Tbilisi, Georgia',
-    description: 'Sculptural monolithic travertine, hand-blown brass pendant lighting, and minimalist Nordic lounge pieces.',
-    heroImage: 'https://images.unsplash.com/photo-1592078615290-033ee584e267?q=80&w=1000&auto=format&fit=crop',
-    categories: ['Seating', 'Tables', 'Lighting', 'Rugs']
-  },
   'Ormel': {
     id: 'Ormel',
     name: 'Ormel Çelik',
@@ -130,7 +121,7 @@ export function getProductBrand(product: Product): string {
   ) {
     return 'Samur';
   }
-  return 'Koza Studio';
+  return '';
 }
 
 function normalizeSlug(str: string): string {
@@ -238,15 +229,8 @@ export function ProductExplorer({
 
     categoryFilteredProducts.forEach(product => {
       const brandKey = getProductBrand(product);
-      const brandInfo = BRANDS[brandKey] || {
-        id: brandKey,
-        name: brandKey,
-        subtitle: 'Specialty Collection',
-        origin: 'International',
-        description: 'Carefully curated artisan pieces.',
-        heroImage: product.image_url,
-        categories: [product.category]
-      };
+      if (!brandKey || !BRANDS[brandKey] || brandKey === 'Koza Studio') return;
+      const brandInfo = BRANDS[brandKey];
 
       if (!brandMap.has(brandKey)) {
         brandMap.set(brandKey, {
@@ -841,7 +825,7 @@ export function ProductExplorer({
                           <span className="text-[9px] uppercase tracking-[0.2em] font-bold opacity-40 block mb-1">
                             {language === 'ka' ? 'განყოფილება' : 'Guild Division'}
                           </span>
-                          <span className="text-sm font-medium">{getProductBrand(selectedProduct)}</span>
+                          <span className="text-sm font-medium">{getProductBrand(selectedProduct) || (language === 'ka' ? 'კოლექცია' : 'Collection')}</span>
                         </div>
                       </div>
                     </div>
@@ -916,7 +900,7 @@ export function ProductExplorer({
 
                       <h3 className="text-2xl font-display mb-1">{selectedProduct.name}</h3>
                       <p className="text-xs font-serif opacity-50 mb-6">
-                        {language === 'ka' ? 'განყოფილება' : 'Division'}: {getProductBrand(selectedProduct)} • {language === 'ka' ? 'სერია' : 'Series'}: {selectedProduct.collection || (language === 'ka' ? 'სტანდარტული' : 'Custom')}
+                        {language === 'ka' ? 'განყოფილება' : 'Division'}: {getProductBrand(selectedProduct) || (language === 'ka' ? 'კოლექცია' : 'Collection')} • {language === 'ka' ? 'სერია' : 'Series'}: {selectedProduct.collection || (language === 'ka' ? 'სტანდარტული' : 'Custom')}
                       </p>
 
                       {!inquirySubmitted ? (

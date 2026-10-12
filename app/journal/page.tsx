@@ -5,11 +5,13 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { ArrowRight, Play, MapPin, Building2 } from 'lucide-react';
-import { MOCK_ARTICLES, JournalArticle } from '@/src/lib/journal';
+import { MOCK_ARTICLES, JournalArticle, getJournalCategoryLabel } from '@/src/lib/journal';
+import { useLanguage } from '@/src/lib/i18n';
 
 export default function JournalPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
+  const { t, language, isGeorgian } = useLanguage();
 
   const categories = useMemo(() => {
     const set = new Set(MOCK_ARTICLES.map(a => a.category));
@@ -17,12 +19,17 @@ export default function JournalPage() {
   }, []);
 
   const filteredArticles = useMemo(() => {
+    const q = searchQuery.toLowerCase().trim();
     return MOCK_ARTICLES.filter(article => {
-      const matchesSearch = searchQuery === '' || 
-        article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        article.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        (article.location && article.location.toLowerCase().includes(searchQuery.toLowerCase())) ||
-        (article.client && article.client.toLowerCase().includes(searchQuery.toLowerCase()));
+      const matchesSearch = q === '' || 
+        article.title.toLowerCase().includes(q) ||
+        (article.title_ka && article.title_ka.toLowerCase().includes(q)) ||
+        article.excerpt.toLowerCase().includes(q) ||
+        (article.excerpt_ka && article.excerpt_ka.toLowerCase().includes(q)) ||
+        (article.location && article.location.toLowerCase().includes(q)) ||
+        (article.location_ka && article.location_ka.toLowerCase().includes(q)) ||
+        (article.client && article.client.toLowerCase().includes(q)) ||
+        (article.client_ka && article.client_ka.toLowerCase().includes(q));
 
       const matchesCat = selectedCategory === 'All' || article.category === selectedCategory;
       return matchesSearch && matchesCat;
@@ -58,7 +65,7 @@ export default function JournalPage() {
             ) : (
               <img
                 src={feature.image_url}
-                alt={feature.title}
+                alt={isGeorgian ? (feature.title_ka || feature.title) : feature.title}
                 className="w-full h-full object-cover opacity-60 grayscale-[0.2] group-hover:opacity-75 group-hover:scale-105 transition-all duration-1000 ease-[0.23,1,0.32,1]"
                 referrerPolicy="no-referrer"
               />
@@ -73,15 +80,15 @@ export default function JournalPage() {
               className="max-w-4xl"
             >
               <div className="flex flex-wrap items-center gap-4 md:gap-6 mb-8 text-[10px] uppercase tracking-[0.4em] font-medium text-brand-gold">
-                <span>{feature.category}</span>
+                <span>{isGeorgian ? (feature.category_ka || getJournalCategoryLabel(feature.category, true)) : feature.category}</span>
                 <div className="w-1 h-1 rounded-full bg-brand-gold/50" />
-                <span>{feature.readTime}</span>
+                <span>{isGeorgian ? (feature.readTime_ka || feature.readTime) : feature.readTime}</span>
                 {feature.client && (
                   <>
                     <div className="w-1 h-1 rounded-full bg-brand-gold/50" />
                     <span className="flex items-center gap-1.5 text-white/90">
                       <Building2 className="w-3 h-3 text-brand-gold" />
-                      {feature.client}
+                      {isGeorgian ? (feature.client_ka || feature.client) : feature.client}
                     </span>
                   </>
                 )}
@@ -90,16 +97,16 @@ export default function JournalPage() {
                     <div className="w-1 h-1 rounded-full bg-brand-gold/50" />
                     <span className="flex items-center gap-1.5 text-white/70">
                       <MapPin className="w-3 h-3 text-brand-gold" />
-                      {feature.location}
+                      {isGeorgian ? (feature.location_ka || feature.location) : feature.location}
                     </span>
                   </>
                 )}
               </div>
               <h1 className="text-4xl md:text-7xl lg:text-8xl font-display leading-[1.05] tracking-tighter mb-8 group-hover:italic transition-all duration-700">
-                {feature.title}
+                {isGeorgian ? (feature.title_ka || feature.title) : feature.title}
               </h1>
               <p className="text-lg md:text-xl font-serif opacity-80 max-w-2xl leading-relaxed">
-                {feature.excerpt}
+                {isGeorgian ? (feature.excerpt_ka || feature.excerpt) : feature.excerpt}
               </p>
             </motion.div>
 
@@ -110,7 +117,7 @@ export default function JournalPage() {
               className="shrink-0"
             >
               <button className="flex items-center gap-4 text-[10px] uppercase tracking-[0.3em] font-bold pb-2 border-b border-white/20 hover:border-brand-gold transition-colors duration-500">
-                {feature.video_url ? 'Watch Walkthrough' : 'Read Case Study'}
+                {feature.video_url ? t.watchWalkthrough : t.readCaseStudy}
                 {feature.video_url ? (
                   <Play className="w-4 h-4 fill-white group-hover:translate-x-1 transition-transform" />
                 ) : (
@@ -127,9 +134,9 @@ export default function JournalPage() {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end border-b border-black/10 pb-8 mb-16 gap-6">
           <div>
             <span className="text-[10px] uppercase tracking-[0.3em] font-semibold text-brand-gold mb-2 block">
-              Documented Real-World Projects
+              {t.journalDocumentedProjects}
             </span>
-            <h2 className="text-3xl md:text-4xl font-display">Archived Journals & Installations</h2>
+            <h2 className="text-3xl md:text-4xl font-display">{t.journalArchivedTitle}</h2>
           </div>
 
           {/* Category Filter Pills */}
@@ -144,111 +151,126 @@ export default function JournalPage() {
                     : 'bg-black/5 text-brand-ink/60 hover:bg-black/10 hover:text-brand-ink'
                 }`}
               >
-                {cat}
+                {cat === 'All' ? t.allFilter : getJournalCategoryLabel(cat, isGeorgian)}
               </button>
             ))}
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-x-12 gap-y-24 md:gap-y-32">
-          <AnimatePresence mode="popLayout">
-            {gallery.map((article, index) => {
-              // Interlocking asymmetrical layout cadence
-              const patternIdx = index % 4;
-              let colSpan = "md:col-span-6";
-              let aspect = "aspect-[4/3]";
-              let marginTop = "mt-0";
+        {filteredArticles.length === 0 ? (
+          <div className="py-24 text-center">
+            <p className="text-lg font-serif text-brand-ink/60">
+              {language === 'ka' ? 'სტატიები ვერ მოიძებნა' : 'No articles found matching your criteria.'}
+            </p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-x-12 gap-y-24 md:gap-y-32">
+            <AnimatePresence mode="popLayout">
+              {gallery.map((article, index) => {
+                // Interlocking asymmetrical layout cadence
+                const patternIdx = index % 4;
+                let colSpan = "md:col-span-6";
+                let aspect = "aspect-[4/3]";
+                let marginTop = "mt-0";
 
-              if (patternIdx === 0) {
-                colSpan = "md:col-span-7";
-                aspect = "aspect-[16/10]";
-              } else if (patternIdx === 1) {
-                colSpan = "md:col-span-5";
-                aspect = "aspect-[4/5]";
-                marginTop = "md:mt-24";
-              } else if (patternIdx === 2) {
-                colSpan = "md:col-span-5";
-                aspect = "aspect-square";
-              } else if (patternIdx === 3) {
-                colSpan = "md:col-span-7";
-                aspect = "aspect-[16/10]";
-                marginTop = "md:-mt-16";
-              }
+                if (patternIdx === 0) {
+                  colSpan = "md:col-span-7";
+                  aspect = "aspect-[16/10]";
+                } else if (patternIdx === 1) {
+                  colSpan = "md:col-span-5";
+                  aspect = "aspect-[4/5]";
+                  marginTop = "md:mt-24";
+                } else if (patternIdx === 2) {
+                  colSpan = "md:col-span-5";
+                  aspect = "aspect-square";
+                } else if (patternIdx === 3) {
+                  colSpan = "md:col-span-7";
+                  aspect = "aspect-[16/10]";
+                  marginTop = "md:-mt-16";
+                }
 
-              return (
-                <motion.article 
-                  key={article.id}
-                  layout
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
-                  className={`${colSpan} ${marginTop} group cursor-pointer flex flex-col`}
-                >
-                  <div className={`w-full ${aspect} overflow-hidden mb-8 relative rounded-sm bg-neutral-900`}>
-                    {article.video_url ? (
-                      <video 
-                        src={article.video_url} 
-                        poster={article.image_url}
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-[0.23,1,0.32,1]"
-                      />
-                    ) : (
-                      <img 
-                        src={article.image_url} 
-                        alt={article.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-[0.23,1,0.32,1]"
-                        referrerPolicy="no-referrer"
-                      />
-                    )}
+                const articleTitle = isGeorgian ? (article.title_ka || article.title) : article.title;
+                const articleExcerpt = isGeorgian ? (article.excerpt_ka || article.excerpt) : article.excerpt;
+                const articleCategory = isGeorgian ? (article.category_ka || getJournalCategoryLabel(article.category, true)) : article.category;
+                const articleReadTime = isGeorgian ? (article.readTime_ka || article.readTime) : article.readTime;
+                const articleClient = isGeorgian ? (article.client_ka || article.client) : article.client;
+                const articleLocation = isGeorgian ? (article.location_ka || article.location) : article.location;
 
-                    <div className="absolute inset-0 bg-brand-ink/0 group-hover:bg-brand-ink/10 transition-colors duration-700 pointer-events-none" />
+                return (
+                  <motion.article 
+                    key={article.id}
+                    layout
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
+                    className={`${colSpan} ${marginTop} group cursor-pointer flex flex-col`}
+                  >
+                    <div className={`w-full ${aspect} overflow-hidden mb-8 relative rounded-sm bg-neutral-900`}>
+                      {article.video_url ? (
+                        <video 
+                          src={article.video_url} 
+                          poster={article.image_url}
+                          autoPlay
+                          loop
+                          muted
+                          playsInline
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-[0.23,1,0.32,1]"
+                        />
+                      ) : (
+                        <img 
+                          src={article.image_url} 
+                          alt={articleTitle}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-[0.23,1,0.32,1]"
+                          referrerPolicy="no-referrer"
+                        />
+                      )}
 
-                    {article.video_url && (
-                      <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-md text-white text-[9px] uppercase tracking-widest px-3 py-1.5 rounded-full flex items-center gap-1.5 font-sans font-medium pointer-events-none">
-                        <Play className="w-2.5 h-2.5 fill-white" />
-                        Video Walkthrough
-                      </div>
-                    )}
+                      <div className="absolute inset-0 bg-brand-ink/0 group-hover:bg-brand-ink/10 transition-colors duration-700 pointer-events-none" />
 
-                    {article.client && (
-                      <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-md text-brand-ink text-[9px] uppercase tracking-widest px-3 py-1.5 rounded-sm flex items-center gap-1.5 font-sans font-semibold pointer-events-none shadow-sm">
-                        <Building2 className="w-2.5 h-2.5 text-brand-gold" />
-                        {article.client}
-                      </div>
-                    )}
-                  </div>
-                  
-                  <div className="flex flex-wrap items-center gap-4 text-[9px] uppercase tracking-[0.3em] font-medium text-brand-gold mb-4">
-                    <span>{article.category}</span>
-                    <div className="w-1 h-1 rounded-full bg-brand-ink/20" />
-                    <span className="text-brand-ink/50">{article.readTime}</span>
-                    {article.location && (
-                      <>
-                        <div className="w-1 h-1 rounded-full bg-brand-ink/20" />
-                        <span className="text-brand-ink/60 flex items-center gap-1">
-                          <MapPin className="w-2.5 h-2.5" />
-                          {article.location}
-                        </span>
-                      </>
-                    )}
-                  </div>
-                  
-                  <h3 className="text-2xl lg:text-3xl font-display mb-4 group-hover:italic transition-all duration-500 leading-snug">
-                    {article.title}
-                  </h3>
-                  
-                  <p className="text-base font-serif opacity-70 leading-relaxed line-clamp-3">
-                    {article.excerpt}
-                  </p>
-                </motion.article>
-              );
-            })}
-          </AnimatePresence>
-        </div>
+                      {article.video_url && (
+                        <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-md text-white text-[9px] uppercase tracking-widest px-3 py-1.5 rounded-full flex items-center gap-1.5 font-sans font-medium pointer-events-none">
+                          <Play className="w-2.5 h-2.5 fill-white" />
+                          {t.videoWalkthroughBadge}
+                        </div>
+                      )}
+
+                      {articleClient && (
+                        <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-md text-brand-ink text-[9px] uppercase tracking-widest px-3 py-1.5 rounded-sm flex items-center gap-1.5 font-sans font-semibold pointer-events-none shadow-sm">
+                          <Building2 className="w-2.5 h-2.5 text-brand-gold" />
+                          {articleClient}
+                        </div>
+                      )}
+                    </div>
+                    
+                    <div className="flex flex-wrap items-center gap-4 text-[9px] uppercase tracking-[0.3em] font-medium text-brand-gold mb-4">
+                      <span>{articleCategory}</span>
+                      <div className="w-1 h-1 rounded-full bg-brand-ink/20" />
+                      <span className="text-brand-ink/50">{articleReadTime}</span>
+                      {articleLocation && (
+                        <>
+                          <div className="w-1 h-1 rounded-full bg-brand-ink/20" />
+                          <span className="text-brand-ink/60 flex items-center gap-1">
+                            <MapPin className="w-2.5 h-2.5" />
+                            {articleLocation}
+                          </span>
+                        </>
+                      )}
+                    </div>
+                    
+                    <h3 className="text-2xl lg:text-3xl font-display mb-4 group-hover:italic transition-all duration-500 leading-snug">
+                      {articleTitle}
+                    </h3>
+                    
+                    <p className="text-base font-serif opacity-70 leading-relaxed line-clamp-3">
+                      {articleExcerpt}
+                    </p>
+                  </motion.article>
+                );
+              })}
+            </AnimatePresence>
+          </div>
+        )}
       </main>
 
       <Footer />

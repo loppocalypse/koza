@@ -92,6 +92,14 @@ export interface Translations {
   privacy: string;
   terms: string;
   allRightsReserved: string;
+
+  // Journal
+  journalDocumentedProjects: string;
+  journalArchivedTitle: string;
+  watchWalkthrough: string;
+  readCaseStudy: string;
+  videoWalkthroughBadge: string;
+  allFilter: string;
 }
 
 const translations: Record<Language, Translations> = {
@@ -176,6 +184,14 @@ const translations: Record<Language, Translations> = {
     privacy: 'Privacy',
     terms: 'Terms',
     allRightsReserved: 'All Rights Reserved.',
+
+    // Journal
+    journalDocumentedProjects: 'Documented Real-World Projects',
+    journalArchivedTitle: 'Archived Journals & Installations',
+    watchWalkthrough: 'Watch Walkthrough',
+    readCaseStudy: 'Read Case Study',
+    videoWalkthroughBadge: 'Video Walkthrough',
+    allFilter: 'All',
   },
   ka: {
     menu: 'მენიუ',
@@ -258,6 +274,14 @@ const translations: Record<Language, Translations> = {
     privacy: 'კონფიდენციალურობა',
     terms: 'წესები & პირობები',
     allRightsReserved: 'ყველა უფლება დაცულია.',
+
+    // Journal
+    journalDocumentedProjects: 'დოკუმენტირებული რეალური პროექტები',
+    journalArchivedTitle: 'ჟურნალის არქივი & ინსტალაციები',
+    watchWalkthrough: 'ვიდეო მიმოხილვა',
+    readCaseStudy: 'პროექტის გაცნობა',
+    videoWalkthroughBadge: 'ვიდეო მიმოხილვა',
+    allFilter: 'ყველა',
   },
 };
 

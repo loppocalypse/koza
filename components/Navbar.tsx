@@ -16,6 +16,8 @@ interface NavbarProps {
 
 export function Navbar({ searchQuery = '', setSearchQuery }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isFavoritesOpen, setIsFavoritesOpen] = useState(false);
   const { favorites, removeFavorite, clearFavorites, count } = useFavorites();
   const { language, setLanguage, t } = useLanguage();
 
@@ -47,7 +49,7 @@ export function Navbar({ searchQuery = '', setSearchQuery }: NavbarProps) {
       <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
         <div className="flex items-center gap-12">
           {/* Main Menu Sheet */}
-          <Sheet>
+          <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
             <SheetTrigger render={<button className="group flex items-center gap-3 focus:outline-none" />}>
               <div className="flex flex-col gap-1.5">
                 <span className={`h-px bg-brand-ink transition-all duration-300 ${isScrolled ? 'w-5' : 'w-8'} group-hover:w-8`} />
@@ -87,7 +89,7 @@ export function Navbar({ searchQuery = '', setSearchQuery }: NavbarProps) {
 
               <div className="flex flex-col gap-6 md:gap-8 shrink-0">
                 {navMenuItems.map((item, i) => (
-                  <Link key={item.href} href={item.href}>
+                  <Link key={item.href} href={item.href} onClick={() => setIsMenuOpen(false)}>
                     <motion.div
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
@@ -110,6 +112,7 @@ export function Navbar({ searchQuery = '', setSearchQuery }: NavbarProps) {
                     <Link
                       key={div.name}
                       href={div.href}
+                      onClick={() => setIsMenuOpen(false)}
                       className="text-xs uppercase tracking-widest font-semibold opacity-60 hover:opacity-100 hover:text-brand-gold transition-colors"
                     >
                       {div.name}
@@ -134,17 +137,6 @@ export function Navbar({ searchQuery = '', setSearchQuery }: NavbarProps) {
             </SheetContent>
           </Sheet>
 
-          <div className="hidden lg:flex items-center gap-8">
-            {divisionItems.slice(0, 5).map((item) => (
-              <Link 
-                key={item.name} 
-                href={item.href} 
-                className="text-[10px] uppercase tracking-[0.2em] font-bold opacity-50 hover:opacity-100 hover:text-brand-gold transition-all"
-              >
-                {item.name}
-              </Link>
-            ))}
-          </div>
         </div>
 
         <Link href="/" className="absolute left-1/2 -translate-x-1/2 group">
@@ -156,11 +148,10 @@ export function Navbar({ searchQuery = '', setSearchQuery }: NavbarProps) {
           <div className="hidden sm:flex items-center text-[10px] uppercase tracking-widest font-bold border border-black/10 rounded-xs px-2 py-1 bg-white/40 backdrop-blur-xs">
             <button
               onClick={() => setLanguage('en')}
-              className={`px-1.5 py-0.5 transition-all cursor-pointer ${
-                language === 'en'
-                  ? 'text-brand-ink font-black border-b border-brand-gold'
-                  : 'opacity-40 hover:opacity-100 hover:text-brand-gold'
-              }`}
+              className={`px-1.5 py-0.5 transition-all cursor-pointer ${language === 'en'
+                ? 'text-brand-ink font-black border-b border-brand-gold'
+                : 'opacity-40 hover:opacity-100 hover:text-brand-gold'
+                }`}
               title="English"
             >
               EN
@@ -168,11 +159,10 @@ export function Navbar({ searchQuery = '', setSearchQuery }: NavbarProps) {
             <span className="opacity-20 mx-0.5">/</span>
             <button
               onClick={() => setLanguage('ka')}
-              className={`px-1.5 py-0.5 transition-all cursor-pointer ${
-                language === 'ka'
-                  ? 'text-brand-ink font-black border-b border-brand-gold'
-                  : 'opacity-40 hover:opacity-100 hover:text-brand-gold'
-              }`}
+              className={`px-1.5 py-0.5 transition-all cursor-pointer ${language === 'ka'
+                ? 'text-brand-ink font-black border-b border-brand-gold'
+                : 'opacity-40 hover:opacity-100 hover:text-brand-gold'
+                }`}
               title="ქართული (Georgian)"
             >
               ქარ
@@ -190,9 +180,9 @@ export function Navbar({ searchQuery = '', setSearchQuery }: NavbarProps) {
           </div>
 
           {/* Favorites List Drawer */}
-          <Sheet>
+          <Sheet open={isFavoritesOpen} onOpenChange={setIsFavoritesOpen}>
             <SheetTrigger render={
-              <button 
+              <button
                 className="relative group p-2 focus:outline-none cursor-pointer"
                 title="View Favorites Shortlist"
                 aria-label="View Favorites Shortlist"
@@ -293,12 +283,13 @@ export function Navbar({ searchQuery = '', setSearchQuery }: NavbarProps) {
                         {language === 'ka' ? 'რჩეულების სია ცარიელია' : 'Your Shortlist is Empty'}
                       </h5>
                       <p className="text-xs font-serif opacity-60 max-w-xs leading-relaxed mb-8">
-                        {language === 'ka' 
+                        {language === 'ka'
                           ? 'დაათვალიერეთ ჩვენი სკამები, ხალიჩები, მაგიდები და ქოლგები თქვენი პროექტის შესაქმნელად.'
                           : 'Explore our commercial seating, contract carpets, bespoke tables, and Aegean textiles to curate your project.'}
                       </p>
                       <Link
                         href="/collections"
+                        onClick={() => setIsFavoritesOpen(false)}
                         className="inline-flex items-center gap-2 px-6 py-3 bg-brand-ink text-white text-[10px] uppercase tracking-widest font-bold hover:bg-brand-gold transition-colors shadow-sm"
                       >
                         {language === 'ka' ? 'კოლექციების ნახვა' : 'Explore Collections'}
@@ -314,13 +305,14 @@ export function Navbar({ searchQuery = '', setSearchQuery }: NavbarProps) {
                 <div className="pt-6 mt-8 border-t border-black/10 shrink-0 space-y-3">
                   <Link
                     href={`/contact?subject=${encodeURIComponent('Shortlist Specification Inquiry (' + favorites.map(f => f.name).join(', ') + ')')}`}
+                    onClick={() => setIsFavoritesOpen(false)}
                     className="w-full flex items-center justify-center gap-3 py-4 bg-brand-ink text-white text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-brand-gold transition-all duration-300 shadow-md"
                   >
                     <span>{language === 'ka' ? `სპეციფიკაციისა და ფასის მოთხოვნა (${count})` : `Request Spec & Quote (${count})`}</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                   <p className="text-[10px] font-serif text-center opacity-40">
-                    {language === 'ka' 
+                    {language === 'ka'
                       ? 'მოიცავს CAD ბლოკებს, მასალების ნიმუშებსა და კორპორატიულ ფასებს.'
                       : 'Includes CAD blocks, finish samples, and contract pricing.'}
                   </p>
