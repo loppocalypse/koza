@@ -15,6 +15,7 @@ export interface Product {
   name: string;
   description: string;
   image_url: string;
+  images?: string[];
   category: string;
   collection?: string;
   dimensions?: string;

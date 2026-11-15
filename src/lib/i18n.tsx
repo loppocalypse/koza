@@ -25,6 +25,7 @@ export interface Translations {
   umbrellas: string;
   carpets: string;
   towels: string;
+  bedding: string;
   lighting: string;
 
   // Favorites / Shortlist
@@ -122,6 +123,7 @@ const translations: Record<Language, Translations> = {
     umbrellas: 'Umbrellas',
     carpets: 'Carpets',
     towels: 'Towels',
+    bedding: 'Bedding',
     lighting: 'Lighting',
 
     favorites: 'Favorites',
@@ -212,6 +214,7 @@ const translations: Record<Language, Translations> = {
     umbrellas: 'ქოლგები',
     carpets: 'ხალიჩები',
     towels: 'პირსახოცები',
+    bedding: 'თეთრეული',
     lighting: 'განათება',
 
     favorites: 'რჩეულები',

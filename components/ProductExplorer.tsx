@@ -62,9 +62,9 @@ export const BRANDS: Record<string, BrandInfo> = {
     name: 'Detay Tekstil',
     subtitle: 'Aegean Organic Textiles & Spa',
     origin: 'Denizli, Turkey',
-    description: 'Finest 100% Turkish organic cotton bathrobes, flat-weave pestemals, and spa linens with ultra-absorbent tactile luxury.',
+    description: 'Finest 100% Turkish organic cotton bathrobes, flat-weave pestemals, embroidered hotel bedding, crisp cotton sheets, piqué bedcovers, and spa linens.',
     heroImage: '/collection/Detay/Beach%20and%20Spa/spa1(1).jpg',
-    categories: ['Towels', 'Rugs']
+    categories: ['Towels', 'Bedding', 'Rugs']
   },
   'Samur': {
     id: 'Samur',
@@ -83,6 +83,15 @@ export const BRANDS: Record<string, BrandInfo> = {
     description: 'Premier stainless steel and fine-wood hotel service trolleys, modular buffet architecture, and banquet systems engineered for high-profile hospitality.',
     heroImage: '/collection/Ormel/3a32f5d4ecb948778fbf89585563a293_511.png',
     categories: ['Hospitality', 'Tables', 'Seating', 'Decor']
+  },
+  'Sabah': {
+    id: 'Sabah',
+    name: 'Sabah Yatak',
+    subtitle: 'Contract & Luxury Hotel Sleep Systems',
+    origin: 'Turkey',
+    description: 'Ergonomic hospitality mattresses, hybrid pocket-spring sleep systems, and upholstered hotel bed bases engineered for five-star comfort and commercial durability.',
+    heroImage: '/collection/Sabah/Platinum%20Line/Black%20Diamond/Black%20Diamond.webp',
+    categories: ['Bedding']
   }
 };
 
@@ -104,6 +113,12 @@ export function getProductBrand(product: Product): string {
   }
   if (img.includes('/collection/Detay/') || col === 'Detay') {
     return 'Detay';
+  }
+  if (
+    img.includes('/collection/Sabah/') ||
+    ['Comfort Line', 'Platinum Line', 'Premium Line', 'VIP Line'].includes(col)
+  ) {
+    return 'Sabah';
   }
   if (
     img.includes('/collection/Umbrella/') ||
@@ -157,6 +172,7 @@ export function ProductExplorer({
       case 'Lighting': return 'განათება';
       case 'Rugs': return 'ხალიჩები';
       case 'Towels': return 'პირსახოცები';
+      case 'Bedding': return 'თეთრეული';
       case 'Umbrellas': return 'ქოლგები';
       case 'Decor': return 'დეკორი';
       default: return cat;
@@ -182,6 +198,7 @@ export function ProductExplorer({
   const [selectedSubCollection, setSelectedSubCollection] = useState<string>('All');
   const [selectedBrandCategory, setSelectedBrandCategory] = useState<string>('All');
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [activeModalImage, setActiveModalImage] = useState<string | null>(null);
   const [sortBy, setSortBy] = useState<'featured' | 'az' | 'stock'>('featured');
   const [visibleCount, setVisibleCount] = useState<number>(ITEMS_PER_PAGE);
 
@@ -196,7 +213,12 @@ export function ProductExplorer({
     notes: ''
   });
 
-  const categories = ['All', 'Hospitality', 'Seating', 'Tables', 'Lighting', 'Rugs', 'Towels', 'Umbrellas', 'Decor'];
+  const categories = ['All', 'Hospitality', 'Seating', 'Tables', 'Lighting', 'Rugs', 'Towels', 'Bedding', 'Umbrellas', 'Decor'];
+
+  // Reset modal image when selectedProduct changes
+  useEffect(() => {
+    setActiveModalImage(selectedProduct?.image_url || null);
+  }, [selectedProduct]);
 
   // Reset pagination & secondary filters when drilldown changes
   useEffect(() => {
@@ -743,16 +765,46 @@ export function ProductExplorer({
               </button>
 
               {/* Product Visual Showcase */}
-              <div className="md:w-[55%] h-[40vh] md:h-full overflow-hidden bg-white relative flex items-center justify-center p-8">
-                <motion.img
-                  initial={{ scale: 1.05 }}
-                  animate={{ scale: 1 }}
-                  transition={{ duration: 1.2 }}
-                  src={selectedProduct.image_url}
-                  alt={selectedProduct.name}
-                  className="w-full h-full object-contain"
-                  referrerPolicy="no-referrer"
-                />
+              <div className="md:w-[55%] h-[40vh] md:h-full overflow-hidden bg-white relative flex flex-col items-center justify-center p-8">
+                <div className="relative w-full flex-1 flex items-center justify-center overflow-hidden">
+                  <motion.img
+                    key={activeModalImage || selectedProduct.image_url}
+                    initial={{ scale: 1.05, opacity: 0.8 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.5 }}
+                    src={activeModalImage || selectedProduct.image_url}
+                    alt={selectedProduct.name}
+                    className="w-full h-full object-contain"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                {selectedProduct.images && selectedProduct.images.length > 1 && (
+                  <div className="flex items-center gap-2 mt-4 z-10">
+                    {selectedProduct.images.map((imgSrc, idx) => {
+                      const isActive = (activeModalImage || selectedProduct.image_url) === imgSrc;
+                      return (
+                        <button
+                          key={imgSrc}
+                          type="button"
+                          onClick={() => setActiveModalImage(imgSrc)}
+                          className={`w-14 h-14 overflow-hidden border transition-all bg-white p-1 ${
+                            isActive
+                              ? 'border-brand-gold ring-1 ring-brand-gold'
+                              : 'border-brand-ink/15 opacity-70 hover:opacity-100'
+                          }`}
+                          aria-label={`View image ${idx + 1}`}
+                        >
+                          <img
+                            src={imgSrc}
+                            alt={`${selectedProduct.name} view ${idx + 1}`}
+                            className="w-full h-full object-cover"
+                            referrerPolicy="no-referrer"
+                          />
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
                 <div className="absolute bottom-6 left-6">
                   <Badge className="bg-brand-ink text-white rounded-none text-[8px] uppercase tracking-widest px-3 py-1.5 border-none font-bold">
                     {getProductBrand(selectedProduct)}

@@ -6022,5 +6022,510 @@
     "in_stock": true,
     "is_new": true,
     "brand": "Samur"
+  },
+  {
+    "id": "683",
+    "name": "Piped Border Pillowcase Set",
+    "description": "Crisp white 100% Turkish cotton sateen pillowcase finished with refined double grey piping for boutique hotel suites.",
+    "image_url": "/collection/Detay/Bed/nakisli1(1).jpg",
+    "category": "Bedding",
+    "collection": "Detay",
+    "brand": "Detay",
+    "material": "100% Long-Staple Turkish Cotton Sateen",
+    "in_stock": true,
+    "is_new": true
+  },
+  {
+    "id": "684",
+    "name": "Slate Double-Line Embroidered Duvet Set",
+    "description": "Tailored hotel bedding ensemble featuring subtle slate-grey double-line embroidery across pillow shams and duvet cover.",
+    "image_url": "/collection/Detay/Bed/nakisli2(1).jpg",
+    "category": "Bedding",
+    "collection": "Detay",
+    "brand": "Detay",
+    "material": "100% Long-Staple Turkish Cotton Sateen",
+    "in_stock": true,
+    "is_new": true
+  },
+  {
+    "id": "685",
+    "name": "Navy Knot Embroidered Sham Trio",
+    "description": "Signature hotel pillow shams detailed with navy-blue double-cord embroidery and geometric corner-knot motifs.",
+    "image_url": "/collection/Detay/Bed/nakisli3(1).jpg",
+    "category": "Bedding",
+    "collection": "Detay",
+    "brand": "Detay",
+    "material": "100% Long-Staple Turkish Cotton Sateen",
+    "in_stock": true,
+    "is_new": true
+  },
+  {
+    "id": "686",
+    "name": "Navy Knot Embroidered Suite Bedding",
+    "description": "Complete luxury suite duvet cover and sham set with crisp navy-blue architectural border embroidery.",
+    "image_url": "/collection/Detay/Bed/nakisli4(1).jpg",
+    "category": "Bedding",
+    "collection": "Detay",
+    "brand": "Detay",
+    "material": "100% Long-Staple Turkish Cotton Sateen",
+    "in_stock": true,
+    "is_new": true
+  },
+  {
+    "id": "687",
+    "name": "Classic Satin-Stripe Bedding Set",
+    "description": "Lustrous tone-on-tone damask satin-stripe hotel duvet cover and pillowcases engineered for commercial laundering.",
+    "image_url": "/collection/Detay/Bed/nakisli5(1).jpg",
+    "category": "Bedding",
+    "collection": "Detay",
+    "brand": "Detay",
+    "material": "100% Long-Staple Turkish Cotton Sateen",
+    "in_stock": true,
+    "is_new": true
+  },
+  {
+    "id": "688",
+    "name": "Fine Damask Stripe Pillow Shams",
+    "description": "Soft-touch woven stripe cotton sateen pillowcases offering subtle sheen and enduring hospitality-grade comfort.",
+    "image_url": "/collection/Detay/Bed/nakisli6(1).jpg",
+    "category": "Bedding",
+    "collection": "Detay",
+    "brand": "Detay",
+    "material": "100% Long-Staple Turkish Cotton Sateen",
+    "in_stock": true,
+    "is_new": true
+  },
+  {
+    "id": "689",
+    "name": "Chain-Link Embroidered Pillow Set",
+    "description": "Artisanal black chain-link border embroidery on luminous white Turkish cotton sateen shams and top sheet.",
+    "image_url": "/collection/Detay/Bed/nakisli7(1).jpg",
+    "category": "Bedding",
+    "collection": "Detay",
+    "brand": "Detay",
+    "material": "100% Long-Staple Turkish Cotton Sateen",
+    "in_stock": true,
+    "is_new": true
+  },
+  {
+    "id": "690",
+    "name": "Chain-Link Embroidered Duvet Set",
+    "description": "Full-bed hospitality duvet cover and matching pillow shams framed with bold contrast chain-link embroidery.",
+    "image_url": "/collection/Detay/Bed/nakisli8(1).jpg",
+    "category": "Bedding",
+    "collection": "Detay",
+    "brand": "Detay",
+    "material": "100% Long-Staple Turkish Cotton Sateen",
+    "in_stock": true,
+    "is_new": true
+  },
+  {
+    "id": "691",
+    "name": "Amber Triple-Line Embroidered Shams",
+    "description": "Warm amber-gold triple-line stitched pillow shams crafted from high-thread-count Aegean cotton sateen.",
+    "image_url": "/collection/Detay/Bed/nakisli9(1).jpg",
+    "category": "Bedding",
+    "collection": "Detay",
+    "brand": "Detay",
+    "material": "100% Long-Staple Turkish Cotton Sateen",
+    "in_stock": true,
+    "is_new": true
+  },
+  {
+    "id": "692",
+    "name": "Amber Corner-Square Embroidered Sham",
+    "description": "Detail-focused triple-line gold embroidery with a geometric corner-square accent on crisp white cotton sateen.",
+    "image_url": "/collection/Detay/Bed/nakisli10(1).jpg",
+    "category": "Bedding",
+    "collection": "Detay",
+    "brand": "Detay",
+    "material": "100% Long-Staple Turkish Cotton Sateen",
+    "in_stock": true,
+    "is_new": true
+  },
+  {
+    "id": "693",
+    "name": "Jacquard Check Hotel Bedding Set",
+    "description": "Subtle tonal check-weave cotton sateen duvet cover and pillow shams designed for five-star guest rooms.",
+    "image_url": "/collection/Detay/Bed/nakisli11(1).jpg",
+    "category": "Bedding",
+    "collection": "Detay",
+    "brand": "Detay",
+    "material": "100% Long-Staple Turkish Cotton Sateen",
+    "in_stock": true,
+    "is_new": true
+  },
+  {
+    "id": "694",
+    "name": "Charcoal Double-Line Embroidered Suite Set",
+    "description": "Minimalist charcoal double-line border embroidery across crisp white duvet cover, flat sheet, and pillow shams.",
+    "image_url": "/collection/Detay/Bed/nakisli12(1).jpg",
+    "category": "Bedding",
+    "collection": "Detay",
+    "brand": "Detay",
+    "material": "100% Long-Staple Turkish Cotton Sateen",
+    "in_stock": true,
+    "is_new": true
+  },
+  {
+    "id": "695",
+    "name": "Fine Twill White Bed Sheet 1",
+    "description": "Breathable, crisp white cotton twill-weave hotel bed sheet engineered for high-frequency commercial laundering.",
+    "image_url": "/collection/Detay/Carsaf/beyaz1(1).jpg",
+    "category": "Bedding",
+    "collection": "Detay",
+    "brand": "Detay",
+    "material": "100% Combed Turkish Cotton",
+    "in_stock": true,
+    "is_new": true
+  },
+  {
+    "id": "696",
+    "name": "Percale Weave White Bed Sheet 2",
+    "description": "Matte-finish 100% Turkish cotton percale sheet offering cool, crisp comfort and superior durability.",
+    "image_url": "/collection/Detay/Carsaf/beyaz2(1).jpg",
+    "category": "Bedding",
+    "collection": "Detay",
+    "brand": "Detay",
+    "material": "100% Combed Turkish Cotton Percale",
+    "in_stock": true,
+    "is_new": true
+  },
+  {
+    "id": "697",
+    "name": "Sateen Weave White Bed Sheet 3",
+    "description": "Silky-smooth high-thread-count cotton sateen flat and fitted sheet designed for luxury hospitality.",
+    "image_url": "/collection/Detay/Carsaf/beyaz3(1).jpg",
+    "category": "Bedding",
+    "collection": "Detay",
+    "brand": "Detay",
+    "material": "100% Combed Turkish Cotton Sateen",
+    "in_stock": true,
+    "is_new": true
+  },
+  {
+    "id": "698",
+    "name": "Classic Poplin White Bed Sheet 4",
+    "description": "Tightly woven pure white cotton hospitality sheet combining soft hand-feel with long-lasting shape retention.",
+    "image_url": "/collection/Detay/Carsaf/beyaz4(1).jpg",
+    "category": "Bedding",
+    "collection": "Detay",
+    "brand": "Detay",
+    "material": "100% Combed Turkish Cotton",
+    "in_stock": true,
+    "is_new": true
+  },
+  {
+    "id": "699",
+    "name": "Waffle Check Cotton Piqué Bedcover 1",
+    "description": "Dimensional waffle-check woven Turkish cotton piqué coverlet, lightweight and breathable for all-season layering.",
+    "image_url": "/collection/Detay/Piques/pike1(1).jpg",
+    "category": "Bedding",
+    "collection": "Detay",
+    "brand": "Detay",
+    "material": "100% Turkish Cotton Piqué Weave",
+    "in_stock": true,
+    "is_new": true
+  },
+  {
+    "id": "700",
+    "name": "Diamond Lattice Cotton Piqué Bedcover 2",
+    "description": "Textured diamond-lattice cotton piqué bedspread offering crisp geometric relief and effortless resort elegance.",
+    "image_url": "/collection/Detay/Piques/pike2(1).jpg",
+    "category": "Bedding",
+    "collection": "Detay",
+    "brand": "Detay",
+    "material": "100% Turkish Cotton Piqué Weave",
+    "in_stock": true,
+    "is_new": true
+  },
+  {
+    "id": "701",
+    "name": "Herringbone Cotton Piqué Bedcover 3",
+    "description": "Refined herringbone-textured pure cotton piqué coverlet tailored for boutique hotel rooms and coastal suites.",
+    "image_url": "/collection/Detay/Piques/pike3(1).jpg",
+    "category": "Bedding",
+    "collection": "Detay",
+    "brand": "Detay",
+    "material": "100% Turkish Cotton Piqué Weave",
+    "in_stock": true,
+    "is_new": true
+  },
+  {
+    "id": "702",
+    "name": "Micro-Honeycomb Cotton Piqué Bedcover 4",
+    "description": "Soft micro-honeycomb weave cotton piqué bedcover with superior airflow and durable hotel-grade finishing.",
+    "image_url": "/collection/Detay/Piques/pike4(1).jpg",
+    "category": "Bedding",
+    "collection": "Detay",
+    "brand": "Detay",
+    "material": "100% Turkish Cotton Piqué Weave",
+    "in_stock": true,
+    "is_new": true
+  },
+  {
+    "id": "703",
+    "name": "Ribbed Stripe Cotton Piqué Bedcover 5",
+    "description": "Tactile ribbed-stripe cotton piqué coverlet crafted in Denizli for year-round hospitality comfort.",
+    "image_url": "/collection/Detay/Piques/pike5(1).jpg",
+    "category": "Bedding",
+    "collection": "Detay",
+    "brand": "Detay",
+    "material": "100% Turkish Cotton Piqué Weave",
+    "in_stock": true,
+    "is_new": true
+  },
+  {
+    "id": "704",
+    "name": "Geometric Basketweave Cotton Piqué Bedcover 6",
+    "description": "Architectural basketweave Turkish cotton piqué bedcover delivering rich texture and crisp white presentation.",
+    "image_url": "/collection/Detay/Piques/pike6(1).jpg",
+    "category": "Bedding",
+    "collection": "Detay",
+    "brand": "Detay",
+    "material": "100% Turkish Cotton Piqué Weave",
+    "in_stock": true,
+    "is_new": true
+  },
+  {
+    "id": "705",
+    "name": "Sabah Maxx Flex",
+    "collection": "Comfort Line",
+    "description": "Supportive hospitality mattress from the Comfort Line featuring quilted stretch-knit ticking and balanced orthopedic spring support for everyday guest comfort.",
+    "material": "Pocket Spring & Quilted Stretch Knit",
+    "image_url": "/collection/Sabah/Comfort%20Line/Maxx%20Flex/Maxx%20Flex.webp",
+    "images": [
+      "/collection/Sabah/Comfort%20Line/Maxx%20Flex/Maxx%20Flex.webp",
+      "/collection/Sabah/Comfort%20Line/Maxx%20Flex/Maxx%20Flex%20Baza.webp"
+    ],
+    "category": "Bedding",
+    "brand": "Sabah",
+    "in_stock": true,
+    "is_new": true
+  },
+  {
+    "id": "706",
+    "name": "Sabah Multirama",
+    "collection": "Comfort Line",
+    "description": "Versatile contract sleep system engineered for high-occupancy hotels with reinforced edge support and breathable multi-layer comfort padding.",
+    "material": "Multi-Spring Core & High-Density Foam",
+    "image_url": "/collection/Sabah/Comfort%20Line/Multirama/Multirama.webp",
+    "images": [
+      "/collection/Sabah/Comfort%20Line/Multirama/Multirama.webp",
+      "/collection/Sabah/Comfort%20Line/Multirama/Multirama%20Baza.webp"
+    ],
+    "category": "Bedding",
+    "brand": "Sabah",
+    "in_stock": true,
+    "is_new": true
+  },
+  {
+    "id": "707",
+    "name": "Sabah Napolitano",
+    "collection": "Comfort Line",
+    "description": "Italian-inspired Comfort Line mattress and matching upholstered base combining firm lumbar alignment with plush surface quilting.",
+    "material": "Orthopedic Spring System & Breathable Knit",
+    "image_url": "/collection/Sabah/Comfort%20Line/Napolitano/Napolitano.webp",
+    "images": [
+      "/collection/Sabah/Comfort%20Line/Napolitano/Napolitano.webp",
+      "/collection/Sabah/Comfort%20Line/Napolitano/Napolitano%20Baza.webp"
+    ],
+    "category": "Bedding",
+    "brand": "Sabah",
+    "in_stock": true,
+    "is_new": true
+  },
+  {
+    "id": "708",
+    "name": "Sabah Black Diamond",
+    "collection": "Platinum Line",
+    "description": "Flagship Platinum Line hybrid mattress with a zip-off plush pillow-top, damask jacquard ticking, and tailored charcoal-trimmed hospitality base.",
+    "material": "Hybrid Pocket Spring & Zip-Off Pillow-Top",
+    "image_url": "/collection/Sabah/Platinum%20Line/Black%20Diamond/Black%20Diamond.webp",
+    "images": [
+      "/collection/Sabah/Platinum%20Line/Black%20Diamond/Black%20Diamond.webp",
+      "/collection/Sabah/Platinum%20Line/Black%20Diamond/Black%20Diamond%20Baza.webp",
+      "/collection/Sabah/Platinum%20Line/Black%20Diamond/file-efcdb2780cdea7493e8c0894a52355ea.webp"
+    ],
+    "category": "Bedding",
+    "brand": "Sabah",
+    "in_stock": true,
+    "is_new": true
+  },
+  {
+    "id": "709",
+    "name": "Sabah Integrale",
+    "collection": "Platinum Line",
+    "description": "Integrated Platinum Line sleep architecture offering zero-partner-disturbance pocket coils and pressure-relieving comfort layers.",
+    "material": "Independent Pocket Coils & Visco Foam",
+    "image_url": "/collection/Sabah/Platinum%20Line/Integrale/Integrale.webp",
+    "images": [
+      "/collection/Sabah/Platinum%20Line/Integrale/Integrale.webp",
+      "/collection/Sabah/Platinum%20Line/Integrale/Integrale%20Baza.webp"
+    ],
+    "category": "Bedding",
+    "brand": "Sabah",
+    "in_stock": true,
+    "is_new": true
+  },
+  {
+    "id": "710",
+    "name": "Sabah Royal Flex",
+    "collection": "Platinum Line",
+    "description": "Regal Platinum Line mattress designed for executive suites, pairing responsive multi-zone support with rich quilted upholstery.",
+    "material": "Multi-Zone Pocket Spring & Natural Cotton Blend",
+    "image_url": "/collection/Sabah/Platinum%20Line/Royal%20Flex/Royal%20Flex.webp",
+    "images": [
+      "/collection/Sabah/Platinum%20Line/Royal%20Flex/Royal%20Flex.webp",
+      "/collection/Sabah/Platinum%20Line/Royal%20Flex/Royal%20Flex%20Baza.webp"
+    ],
+    "category": "Bedding",
+    "brand": "Sabah",
+    "in_stock": true,
+    "is_new": true
+  },
+  {
+    "id": "711",
+    "name": "Sabah Vip Flex",
+    "collection": "Platinum Line",
+    "description": "Executive-grade Platinum Line sleep system built for five-star suites with deep Euro-top cushioning and reinforced perimeter framing.",
+    "material": "Pocket Spring & Euro-Top Memory Foam",
+    "image_url": "/collection/Sabah/Platinum%20Line/Vip%20Flex/Vip%20Flex.webp",
+    "images": [
+      "/collection/Sabah/Platinum%20Line/Vip%20Flex/Vip%20Flex.webp",
+      "/collection/Sabah/Platinum%20Line/Vip%20Flex/Vip%20Flex%20Baza.webp"
+    ],
+    "category": "Bedding",
+    "brand": "Sabah",
+    "in_stock": true,
+    "is_new": true
+  },
+  {
+    "id": "712",
+    "name": "Sabah Diamante",
+    "collection": "Premium Line",
+    "description": "Refined Premium Line hospitality mattress featuring diamond-quilted soft-touch fabric and balanced medium-firm spinal support.",
+    "material": "Pocket Spring & High-Resilience Foam",
+    "image_url": "/collection/Sabah/Premium%20Line/Diamante/Diamante.webp",
+    "images": [
+      "/collection/Sabah/Premium%20Line/Diamante/Diamante.webp",
+      "/collection/Sabah/Premium%20Line/Diamante/Diamante%20Baza.webp"
+    ],
+    "category": "Bedding",
+    "brand": "Sabah",
+    "in_stock": true,
+    "is_new": true
+  },
+  {
+    "id": "713",
+    "name": "Sabah Prima",
+    "collection": "Premium Line",
+    "description": "Essential Premium Line hotel mattress delivering dependable posture support, breathable side-mesh ventilation, and clean tailored lines.",
+    "material": "Bonnell & Pocket Hybrid Support",
+    "image_url": "/collection/Sabah/Premium%20Line/Prima/Prima.webp",
+    "images": [
+      "/collection/Sabah/Premium%20Line/Prima/Prima.webp",
+      "/collection/Sabah/Premium%20Line/Prima/Prima%20Baza.webp"
+    ],
+    "category": "Bedding",
+    "brand": "Sabah",
+    "in_stock": true,
+    "is_new": true
+  },
+  {
+    "id": "714",
+    "name": "Sabah Prima Plus",
+    "collection": "Premium Line",
+    "description": "Enhanced edition of the Prima sleep system with an added plush top comfort layer for elevated guest satisfaction.",
+    "material": "Enhanced Spring Core & Plush Top Layer",
+    "image_url": "/collection/Sabah/Premium%20Line/Prima%20Plus/Prima%20Plus.webp",
+    "images": [
+      "/collection/Sabah/Premium%20Line/Prima%20Plus/Prima%20Plus.webp",
+      "/collection/Sabah/Premium%20Line/Prima%20Plus/Prima%20Plus%20Baza.webp"
+    ],
+    "category": "Bedding",
+    "brand": "Sabah",
+    "in_stock": true,
+    "is_new": true
+  },
+  {
+    "id": "715",
+    "name": "Sabah Resort Delux",
+    "collection": "Premium Line",
+    "description": "Designed specifically for coastal resorts and boutique hotels, offering cool airflow textiles and resilient multi-season support.",
+    "material": "Breathable Jacquard Knit & Orthopedic Core",
+    "image_url": "/collection/Sabah/Premium%20Line/Resort%20Delux/Resort%20Delux.webp",
+    "images": [
+      "/collection/Sabah/Premium%20Line/Resort%20Delux/Resort%20Delux.webp",
+      "/collection/Sabah/Premium%20Line/Resort%20Delux/Resort%20Delux%20Baza.webp"
+    ],
+    "category": "Bedding",
+    "brand": "Sabah",
+    "in_stock": true,
+    "is_new": true
+  },
+  {
+    "id": "716",
+    "name": "Sabah Double Flex",
+    "collection": "VIP Line",
+    "description": "Dual-comfort VIP Line mattress engineered with progressive dual-density foam and precision pocket springs for restorative sleep.",
+    "material": "Dual-Density Foam & 7-Zone Pocket Spring",
+    "image_url": "/collection/Sabah/VIP%20Line/Double%20Flex/Double%20Flex.webp",
+    "images": [
+      "/collection/Sabah/VIP%20Line/Double%20Flex/Double%20Flex.webp",
+      "/collection/Sabah/VIP%20Line/Double%20Flex/Double%20Flex%20Baza.webp"
+    ],
+    "category": "Bedding",
+    "brand": "Sabah",
+    "in_stock": true,
+    "is_new": true
+  },
+  {
+    "id": "717",
+    "name": "Sabah Elegante",
+    "collection": "VIP Line",
+    "description": "Tailored VIP Line sleep system with refined piping, cloud-soft quilting, and architectural upholstered bed base compatibility.",
+    "material": "Luxury Stretch Knit & Pocket Coil System",
+    "image_url": "/collection/Sabah/VIP%20Line/Elegante/Elegante.webp",
+    "images": [
+      "/collection/Sabah/VIP%20Line/Elegante/Elegante.webp",
+      "/collection/Sabah/VIP%20Line/Elegante/Elegante%20Baza.webp"
+    ],
+    "category": "Bedding",
+    "brand": "Sabah",
+    "in_stock": true,
+    "is_new": true
+  },
+  {
+    "id": "718",
+    "name": "Sabah Suit Delux",
+    "collection": "VIP Line",
+    "description": "Signature VIP Line suite mattress crafted for flagship hotel penthouses with deep pillow-top luxury and zero motion transfer.",
+    "material": "Deep Pillow-Top & Independent Pocket Springs",
+    "image_url": "/collection/Sabah/VIP%20Line/Suit%20Delux/Suit%20Delux.webp",
+    "images": [
+      "/collection/Sabah/VIP%20Line/Suit%20Delux/Suit%20Delux.webp",
+      "/collection/Sabah/VIP%20Line/Suit%20Delux/Suit%20Delux%20Baza.webp"
+    ],
+    "category": "Bedding",
+    "brand": "Sabah",
+    "in_stock": true,
+    "is_new": true
+  },
+  {
+    "id": "719",
+    "name": "Sabah Terapia",
+    "collection": "VIP Line",
+    "description": "Ergonomic VIP Line wellness mattress engineered to relieve pressure points and promote deep spinal recovery.",
+    "material": "Ergonomic Visco Elastic & Pocket Spring",
+    "image_url": "/collection/Sabah/VIP%20Line/Terapia/Terapia.webp",
+    "images": [
+      "/collection/Sabah/VIP%20Line/Terapia/Terapia.webp",
+      "/collection/Sabah/VIP%20Line/Terapia/Terapia%20Baza.webp"
+    ],
+    "category": "Bedding",
+    "brand": "Sabah",
+    "in_stock": true,
+    "is_new": true
   }
 ]
